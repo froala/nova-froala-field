@@ -1,23 +1,46 @@
 {
     "name": "froala/nova-froala-field",
-    "description": "A Laravel Nova field.",
+    "description": "A Laravel Nova Froala WYSIWYG Editor Field.",
     "keywords": [
         "laravel",
-        "nova"
+        "nova",
+        "field",
+        "wysiwyg",
+        "froala",
+        "editor",
     ],
+    "homepage": "https://github.com/froala/nova-froala-field",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Slava Razum",
+            "email": "modern.web.artisan@gmail.com",
+            "role": "Developer"
+        }
+    ],
     "require": {
-        "php": ">=7.1.0"
+        "php": ">=7.1.0",
+        "laravel/nova": "~1.0",
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.1",
+        "orchestra/testbench": "^3.6",
+        "phpunit/phpunit": "7.1"
     },
     "autoload": {
         "psr-4": {
             "Froala\\NovaFroalaField\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Froala\\NovaFroalaField\\Tests\\": "tests"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
-                "Froala\\NovaFroalaField\\FieldServiceProvider"
+                "Froala\\NovaFroalaField\\FroalaFieldServiceProvider"
             ]
         }
     },
