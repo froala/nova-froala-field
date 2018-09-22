@@ -4,7 +4,7 @@ namespace Froala\NovaFroalaField;
 
 use Laravel\Nova\Fields\Field;
 
-class NovaFroalaField extends Field
+class Froala extends Field
 {
     /**
      * The field's component.
