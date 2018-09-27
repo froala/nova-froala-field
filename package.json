@@ -22,6 +22,7 @@
         "prettier": "^1.14.3"
     },
     "dependencies": {
-        "vue": "^2.5.0"
+        "vue": "^2.5.0",
+        "vue-froala-wysiwyg": "^2.8.5"
     }
 }
