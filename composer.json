@@ -7,7 +7,7 @@
         "field",
         "wysiwyg",
         "froala",
-        "editor",
+        "editor"
     ],
     "homepage": "https://github.com/froala/nova-froala-field",
     "license": "MIT",
@@ -18,9 +18,15 @@
             "role": "Developer"
         }
     ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
     "require": {
         "php": ">=7.1.0",
-        "laravel/nova": "~1.0",
+        "laravel/nova": "~1.0"
     },
     "require-dev": {
         "mockery/mockery": "^1.1",
