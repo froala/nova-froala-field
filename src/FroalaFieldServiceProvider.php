@@ -19,6 +19,14 @@ class FroalaFieldServiceProvider extends ServiceProvider
             Nova::script('nova-froala-field', __DIR__.'/../dist/js/field.js');
             Nova::style('nova-froala-field', __DIR__.'/../dist/css/field.css');
         });
+
+        $this->publishes([
+            __DIR__.'/../dist/fonts/' => public_path('vendor/nova/fonts'),
+        ], 'nova-froala-field-fonts');
+
+        $this->publishes([
+            __DIR__.'/../dist/css/froala_styles.min.css' => public_path('css/vendor/froala_styles.min.css'),
+        ], 'froala-styles');
     }
 
     /**
