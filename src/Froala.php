@@ -111,4 +111,9 @@ class Froala extends Trix
             }
         }
     }
+
+    public function showOnIndex()
+    {
+        $this->showOnIndex = true;
+    }
 }
