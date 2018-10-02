@@ -4,8 +4,15 @@ namespace Froala\NovaFroalaField;
 
 use Illuminate\Support\Str;
 use Laravel\Nova\Fields\Trix;
-use Laravel\Nova\Trix\PendingAttachment;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Symfony\Component\HttpFoundation\File\File;
+use MadWeb\NovaFroalaEditor\Handlers\DetachAttachment;
+use MadWeb\NovaFroalaEditor\Handlers\DeleteAttachments;
+use MadWeb\NovaFroalaEditor\Handlers\AttachedImagesList;
+use MadWeb\NovaFroalaEditor\Handlers\StorePendingAttachment;
+use MadWeb\NovaFroalaEditor\Handlers\DiscardPendingAttachments;
+use Laravel\Nova\Trix\PendingAttachment as TrixPendingAttachment;
+use MadWeb\NovaFroalaEditor\Models\PendingAttachment as FroalaPendingAttachment;
 
 class Froala extends Trix
 {
@@ -15,6 +22,8 @@ class Froala extends Trix
      * @var string
      */
     public $component = 'nova-froala-field';
+
+    const DRIVER_NAME = 'froala';
 
     /** {@inheritdoc} */
     public function __construct(string $name, ?string $attribute = null, $resolveCallback = null)
@@ -44,6 +53,7 @@ class Froala extends Trix
                 'heightMin' => 300,
             ],
             'draftId' => Str::uuid(),
+            'attachmentsDriver' => config('nova.froala-field.attachments_driver'),
         ]);
     }
 
@@ -60,6 +70,29 @@ class Froala extends Trix
         return $this->withMeta([
             'options' => array_merge($this->meta['options'], $options),
         ]);
+    }
+
+    /**
+     * Specify that file uploads should not be allowed.
+     */
+    public function withFiles($disk = null)
+    {
+        $this->withFiles = true;
+
+        $this->disk($disk);
+
+        if (config('nova.froala-field.attachments_driver', self::DRIVER_NAME) !== self::DRIVER_NAME) {
+
+            return parent::withFiles($disk);
+        }
+
+        $this->attach(new StorePendingAttachment($this))
+            ->detach(new DetachAttachment)
+            ->delete(new DeleteAttachments($this))
+            ->discard(new DiscardPendingAttachments)
+            ->prunable();
+
+        return $this;
     }
 
     /**
@@ -90,8 +123,13 @@ class Froala extends Trix
         );
 
         if ($request->{$this->attribute.'DraftId'} && $this->withFiles) {
+            $pendingAttachmentClass =
+                config('nova.froala-field.attachments_driver', self::DRIVER_NAME) === self::DRIVER_NAME
+                ? FroalaPendingAttachment::class
+                : TrixPendingAttachment::class;
+
             if ($model->exists) {
-                PendingAttachment::persistDraft(
+                $pendingAttachmentClass::persistDraft(
                     $request->{$this->attribute.'DraftId'},
                     $this,
                     $model
@@ -99,9 +137,9 @@ class Froala extends Trix
             } else {
                 $modelClass = get_class($model);
 
-                $modelClass::saved(function ($model) use ($request) {
+                $modelClass::saved(function ($model) use ($request, $pendingAttachmentClass) {
                     if ($model->wasRecentlyCreated) {
-                        PendingAttachment::persistDraft(
+                        $pendingAttachmentClass::persistDraft(
                             $request->{$this->attribute.'DraftId'},
                             $this,
                             $model

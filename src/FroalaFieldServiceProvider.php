@@ -27,6 +27,10 @@ class FroalaFieldServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../dist/css/froala_styles.min.css' => public_path('css/vendor/froala_styles.min.css'),
         ], 'froala-styles');
+
+        $this->publishes([
+            __DIR__.'/../config/froala-field.php' => config_path('nova/froala-field.php'),
+        ], 'config');
     }
 
     /**
