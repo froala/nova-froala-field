@@ -25,6 +25,13 @@ class Froala extends Trix
 
     const DRIVER_NAME = 'froala';
 
+    /**
+     * The callback that should be executed to return attached images list.
+     *
+     * @var callable
+     */
+    public $imagesCallback;
+
     /** {@inheritdoc} */
     public function __construct(string $name, ?string $attribute = null, $resolveCallback = null)
     {
@@ -82,6 +89,7 @@ class Froala extends Trix
         $this->disk($disk);
 
         if (config('nova.froala-field.attachments_driver', self::DRIVER_NAME) !== self::DRIVER_NAME) {
+            $this->images(new AttachedImagesList($this));
 
             return parent::withFiles($disk);
         }
@@ -90,6 +98,7 @@ class Froala extends Trix
             ->detach(new DetachAttachment)
             ->delete(new DeleteAttachments($this))
             ->discard(new DiscardPendingAttachments)
+            ->images(new AttachedImagesList($this))
             ->prunable();
 
         return $this;
@@ -153,5 +162,20 @@ class Froala extends Trix
     public function showOnIndex()
     {
         $this->showOnIndex = true;
+    }
+
+    /**
+     * Specify the callback that should be used to get attached images list.
+     *
+     * @param  callable  $imagesCallback
+     * @return $this
+     */
+    public function images(callable $imagesCallback)
+    {
+        $this->withFiles = true;
+
+        $this->imagesCallback = $imagesCallback;
+
+        return $this;
     }
 }
