@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Froala\NovaFroalaField\Froala;
 use Illuminate\Support\Facades\Storage;
+use Spatie\ImageOptimizer\OptimizerChainFactory;
 use Froala\NovaFroalaField\Models\PendingAttachment;
 
 class StorePendingAttachment
@@ -49,6 +50,8 @@ class StorePendingAttachment
             'disk' => $this->field->disk,
         ])->attachment;
 
+        $this->imageOptimize($attachment);
+
         return Storage::disk($this->field->disk)->url($attachment);
     }
 
@@ -61,6 +64,27 @@ class StorePendingAttachment
             abort(response()->json([
                 'status' => Response::HTTP_CONFLICT,
             ]), Response::HTTP_CONFLICT);
+        }
+    }
+
+    protected function imageOptimize(string $attachment): void
+    {
+        if (config('nova.froala-field.optimize_images')) {
+            $optimizerChain = OptimizerChainFactory::create();
+
+            if (count($optimizers = config('nova.froala-field.image_optimizers'))) {
+                $optimizers = array_map(
+                    function (array $optimizerOptions, string $optimizerClassName) {
+                        return (new $optimizerClassName)->setOptions($optimizerOptions);
+                    },
+                    $optimizers,
+                    array_keys($optimizers)
+                );
+
+                $optimizerChain->setOptimizers($optimizers);
+            }
+
+            $optimizerChain->optimize(Storage::disk($this->field->disk)->path($attachment));
         }
     }
 }

@@ -26,7 +26,8 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "laravel/nova": "~1.0"
+        "laravel/nova": "~1.0",
+        "spatie/image-optimizer": "^1.1"
     },
     "require-dev": {
         "mockery/mockery": "^1.1",
