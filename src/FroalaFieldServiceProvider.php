@@ -15,6 +15,10 @@ class FroalaFieldServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->app->booted(function () {
+            $this->routes();
+        });
+
         Nova::serving(function (ServingNova $event) {
             Nova::script('nova-froala-field', __DIR__.'/../dist/js/field.js');
             Nova::style('nova-froala-field', __DIR__.'/../dist/css/field.css');
@@ -40,6 +44,22 @@ class FroalaFieldServiceProvider extends ServiceProvider
                 => database_path('migrations/'.$timestamp.'_create_froala_attachment_tables.php'),
             ], 'migrations');
         }
+    }
+
+    /**
+     * Register the card's routes.
+     *
+     * @return void
+     */
+    protected function routes()
+    {
+        if ($this->app->routesAreCached()) {
+            return;
+        }
+
+        Route::middleware(['nova'])
+            ->prefix('nova-vendor/froala-field')
+            ->group(__DIR__.'/../routes/api.php');
     }
 
     /**
