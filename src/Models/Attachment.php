@@ -1,6 +1,6 @@
 <?php
 
-namespace MadWeb\NovaFroalaEditor\Models;
+namespace Froala\NovaFroalaField\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;

@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use MadWeb\NovaFroalaEditor\Http\Controllers\FroalaUploadController;
-use MadWeb\NovaFroalaEditor\Http\Controllers\FroalaImageManagerController;
+use Froala\NovaFroalaField\Http\Controllers\FroalaUploadController;
+use Froala\NovaFroalaField\Http\Controllers\FroalaImageManagerController;
 
 Route::get('image-manager', FroalaImageManagerController::class.'@index');
 Route::delete('image-manager', FroalaImageManagerController::class.'@destroy');
