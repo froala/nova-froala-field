@@ -19,7 +19,7 @@ class AttachedImagesList
     /**
      * Create a new invokable instance.
      *
-     * @param  \Froala\NovaFroalaFieldr\Froala  $field
+     * @param  \Froala\NovaFroalaField\Froala  $field
      * @return void
      */
     public function __construct(Froala $field)
@@ -29,10 +29,8 @@ class AttachedImagesList
 
     /**
      * Attach a pending attachment to the field.
-     *
-     * @param  \Illuminate\Http\Request  $request
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): array
     {
         $images = [];
 

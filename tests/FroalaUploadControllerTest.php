@@ -2,7 +2,7 @@
 
 namespace Froala\NovaFroalaField\Tests;
 
-class ToolControllerTest extends TestCase
+class FroalaUploadControllerTest extends TestCase
 {
     /** @test */
     public function it_can_can_return_a_response()

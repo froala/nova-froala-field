@@ -1,9 +1,9 @@
 <template>
     <div>
         <a
-                @click="toggle"
-                class="cursor-pointer dim inline-block text-primary font-bold"
-                aria-role="button"
+            @click="toggle"
+            class="cursor-pointer dim inline-block text-primary font-bold"
+            aria-role="button"
         >
             {{ showHideLabel }}
         </a>
@@ -25,21 +25,21 @@
 </template>
 
 <script>
-    export default {
-        props: ['resourceName', 'field'],
+export default {
+    props: ['resourceName', 'field'],
 
-        data: () => ({ expanded: false }),
+    data: () => ({ expanded: false }),
 
-        computed: {
-            showHideLabel() {
-                return !this.expanded ? this.__('Show Content') : this.__('Hide Content');
-            },
+    computed: {
+        showHideLabel() {
+            return !this.expanded ? this.__('Show Content') : this.__('Hide Content');
         },
+    },
 
-        methods: {
-            toggle() {
-                this.expanded = !this.expanded;
-            },
+    methods: {
+        toggle() {
+            this.expanded = !this.expanded;
         },
-    };
+    },
+};
 </script>

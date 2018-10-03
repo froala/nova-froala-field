@@ -5,7 +5,6 @@ namespace Froala\NovaFroalaField;
 use Illuminate\Support\Str;
 use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Symfony\Component\HttpFoundation\File\File;
 use Froala\NovaFroalaField\Handlers\DetachAttachment;
 use Froala\NovaFroalaField\Handlers\DeleteAttachments;
 use Froala\NovaFroalaField\Handlers\AttachedImagesList;
@@ -115,7 +114,7 @@ class Froala extends Trix
     protected function fillAttribute(NovaRequest $request, $requestAttribute, $model, $attribute)
     {
         if (isset($this->fillCallback)) {
-            return call_user_func(
+            call_user_func(
                 $this->fillCallback,
                 $request,
                 $model,

@@ -41,7 +41,7 @@ class MediaConfigurator {
         if (this.field.withFiles) {
             Nova.request()
                 .delete(this.adapter.cleanUpUrl)
-                .then(response => console.log(response))
+                .then(response => {})
                 .catch(error => {
                     this.notificator.show(error.message, { type: 'error' });
                 });
@@ -86,7 +86,9 @@ class MediaConfigurator {
                         response = JSON.parse(response);
 
                         if (typeof response.status !== 'undefined' && response.status === 409) {
-                            this.notificator.show('A file with this name already exists.', { type: 'error' });
+                            this.notificator.show('A file with this name already exists.', {
+                                type: 'error',
+                            });
 
                             return;
                         }

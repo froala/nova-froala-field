@@ -9,11 +9,11 @@
 </template>
 
 <script>
-    import Excerpt from './Excerpt';
+import Excerpt from './Excerpt';
 
-    export default {
-        props: ['resource', 'resourceName', 'resourceId', 'field'],
+export default {
+    props: ['resource', 'resourceName', 'resourceId', 'field'],
 
-        components: { Excerpt },
-    };
+    components: { Excerpt },
+};
 </script>

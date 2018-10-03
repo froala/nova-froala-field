@@ -25,6 +25,7 @@ class Attachment extends Model
      * Purge the attachment.
      *
      * @return void
+     * @throws \Exception
      */
     public function purge()
     {

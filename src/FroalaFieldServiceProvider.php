@@ -4,7 +4,10 @@ namespace Froala\NovaFroalaField;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Nova\Http\Controllers\TrixAttachmentController;
+use Froala\NovaFroalaField\Http\Controllers\FroalaToTrixAttachmentAdapterController;
 
 class FroalaFieldServiceProvider extends ServiceProvider
 {
@@ -40,8 +43,7 @@ class FroalaFieldServiceProvider extends ServiceProvider
             $timestamp = date('Y_m_d_His', time());
 
             $this->publishes([
-                __DIR__.'/../database/migrations/create_froala_attachment_tables.php.stub'
-                => database_path('migrations/'.$timestamp.'_create_froala_attachment_tables.php'),
+                __DIR__.'/../database/migrations/create_froala_attachment_tables.php.stub' => database_path('migrations/'.$timestamp.'_create_froala_attachment_tables.php'),
             ], 'migrations');
         }
     }

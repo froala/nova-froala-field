@@ -38,9 +38,10 @@ class PendingAttachment extends Model
     /**
      * Persist the pending attachment.
      *
-     * @param  \Froala\NovaFroalaField\Froala  $field
-     * @param  mixed  $model
+     * @param  \Froala\NovaFroalaField\Froala $field
+     * @param  mixed $model
      * @return void
+     * @throws \Exception
      */
     public function persist(Froala $field, $model)
     {
@@ -59,6 +60,7 @@ class PendingAttachment extends Model
      * Purge the attachment.
      *
      * @return void
+     * @throws \Exception
      */
     public function purge()
     {
