@@ -69,6 +69,6 @@ class FroalaFieldServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->mergeConfigFrom(__DIR__.'/../config/froala-field.php', 'nova.froala-field');
     }
 }
