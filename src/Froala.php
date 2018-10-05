@@ -37,27 +37,7 @@ class Froala extends Trix
         parent::__construct($name, $attribute, $resolveCallback);
 
         $this->withMeta([
-            'options' => [
-                'toolbarButtons' => [
-                    'bold',
-                    'italic',
-                    'underline',
-                    '|',
-                    'formatOL',
-                    'formatUL',
-                    '|',
-                    'insertImage',
-                    'insertFile',
-                    'insertLink',
-                    'insertVideo',
-                    '|',
-                    'embedly',
-                    'spellChecker',
-                    'html',
-                ],
-                'toolbarButtonsXS' => ['bold', 'italic', 'underline', '|', 'formatOL', 'formatUL'],
-                'heightMin' => 300,
-            ],
+            'options' => config('nova.froala-field.options', []),
             'draftId' => Str::uuid(),
             'attachmentsDriver' => config('nova.froala-field.attachments_driver'),
         ]);
@@ -161,6 +141,8 @@ class Froala extends Trix
     public function showOnIndex()
     {
         $this->showOnIndex = true;
+        
+        return $this;
     }
 
     /**

@@ -54,21 +54,7 @@ export default {
          * Additional configurations
          */
         defaultConfig() {
-            return {
-                // Set max image size to 5MB.
-                imageMaxSize: 5 * 1024 * 1024,
-
-                // Allow to upload PNG and JPG.
-                imageAllowedTypes: ['jpeg', 'jpg', 'png', 'gif'],
-
-                // Set max file size to 20MB.
-                fileMaxSize: 20 * 1024 * 1024,
-
-                // Allow to upload any file.
-                fileAllowedTypes: ['*'],
-
-                ...this.mediaConfigurator.getConfig(),
-            };
+            return this.mediaConfigurator.getConfig();
         },
     },
 };
