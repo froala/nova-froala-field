@@ -36,11 +36,53 @@ class Froala extends Trix
     {
         parent::__construct($name, $attribute, $resolveCallback);
 
+        $uploadLimits = [
+            'fileMaxSize',
+            'imageMaxSize',
+            'videoMaxSize',
+        ];
+
+        $uploadMaxFilesize = $this->getUploadMaxFilesize();
+
+        foreach ($uploadLimits as $key => $property) {
+            $uploadLimits[$property] = $uploadMaxFilesize;
+            unset($uploadLimits[$key]);
+        }
+
         $this->withMeta([
-            'options' => config('nova.froala-field.options', []),
+            'options' => config('nova.froala-field.options', []) + $uploadLimits,
             'draftId' => Str::uuid(),
             'attachmentsDriver' => config('nova.froala-field.attachments_driver'),
         ]);
+    }
+
+    /**
+     * Determine the server 'upload_max_filesize' as bytes.
+     *
+     * @return int
+     */
+    protected function getUploadMaxFilesize(): int
+    {
+        $uploadMaxFilesize = config('nova.froala-field.upload_max_filesize')
+                            ?? ini_get('upload_max_filesize');
+
+        if (is_numeric($uploadMaxFilesize)) {
+            return $uploadMaxFilesize;
+        }
+
+        $metric = strtoupper(substr($uploadMaxFilesize, -1));
+        $uploadMaxFilesize = (int) $uploadMaxFilesize;
+
+        switch ($metric) {
+            case 'K':
+                return $uploadMaxFilesize * 1024;
+            case 'M':
+                return $uploadMaxFilesize * 1048576;
+            case 'G':
+                return $uploadMaxFilesize * 1073741824;
+            default:
+                return $uploadMaxFilesize;
+        }
     }
 
     /**

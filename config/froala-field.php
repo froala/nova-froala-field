@@ -3,6 +3,36 @@
 return [
     /*
     |--------------------------------------------------------------------------
+    | Default Editor Options
+    |--------------------------------------------------------------------------
+    |
+    | Setup default values for any Froala editor option.
+    |
+    | To view a list of all available options the Froala documentation
+    | {@link https://www.froala.com/wysiwyg-editor/docs/options}
+    |
+    */
+
+    'options' => [
+        'toolbarButtons' => [
+            'bold',
+            'italic',
+            'underline',
+            '|',
+            'formatOL',
+            'formatUL',
+            '|',
+            'insertImage',
+            'insertFile',
+            'insertLink',
+            'insertVideo',
+            '|',
+            'html',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Editor Attachments Driver
     |--------------------------------------------------------------------------
     |
@@ -36,33 +66,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Editor Options
+    | Maximun Possible Size for Upload Files
     |--------------------------------------------------------------------------
     |
-    | Setup default values for any Froala editor option.
+    | Customize max upload file size for incomming attachments.
+    | By default it set to "null", it means that default value
+    | retrieves from `upload_max_size` directive of php.ini file.
     |
-    | To view a list of all available options the Froala documentation
-    | {@link https://www.froala.com/wysiwyg-editor/docs/options}
+    | Format is the same as for `uploaded_max_size` directive.
+    | Visit faq page, to get more detail description.
+    | {@link http://php.net/manual/en/faq.using.php#faq.using.shorthandbytes}
     |
     */
 
-    'options' => [
-        'toolbarButtons' => [
-            'bold',
-            'italic',
-            'underline',
-            '|',
-            'formatOL',
-            'formatUL',
-            '|',
-            'insertImage',
-            'insertFile',
-            'insertLink',
-            'insertVideo',
-            '|',
-            'html',
-        ],
-    ],
+    'upload_max_filesize' => null,
 
     /*
     |--------------------------------------------------------------------------
