@@ -103,6 +103,8 @@ edit `nova.froala-field.options` value:
         'html',
     ],
 ],
+
+//...
 ```
 
 If you want to set options only to specific field, just pass them to `options` method:

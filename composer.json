@@ -44,6 +44,9 @@
             "Froala\\NovaFroalaField\\Tests\\": "tests"
         }
     },
+    "scripts": {
+        "test": "phpunit --colors=always"
+    },
     "extra": {
         "laravel": {
             "providers": [
