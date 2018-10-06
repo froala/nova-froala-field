@@ -6,6 +6,8 @@ use Laravel\Nova\Nova;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Database\Schema\Blueprint;
 use Froala\NovaFroalaField\FroalaFieldServiceProvider;
+use Laravel\Nova\NovaApplicationServiceProvider;
+use Laravel\Nova\NovaServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Froala\NovaFroalaField\Tests\Fixtures\TestResource;
 
@@ -21,12 +23,18 @@ abstract class TestCase extends OrchestraTestCase
 
         $this->setUpDatabase($this->app);
 
-        Nova::$resources = [new TestResource(null)];
+        Nova::resources([
+            TestResource::class,
+        ]);
+
+        Nova::routes()->register();
     }
 
     protected function getPackageProviders($app)
     {
         return [
+            NovaServiceProvider::class,
+            NovaApplicationServiceProvider::class,
             FroalaFieldServiceProvider::class,
         ];
     }
