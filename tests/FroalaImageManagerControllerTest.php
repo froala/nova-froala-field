@@ -45,7 +45,7 @@ class FroalaImageManagerControllerTest extends TestCase
         $this->json('DELETE', 'nova-vendor/froala-field/image-manager', [
             'src' => $src,
             'resource' => 'articles',
-            'field' => 'content'
+            'field' => 'content',
         ]);
 
         Storage::disk(static::DISK)->assertMissing($this->file->hashName());

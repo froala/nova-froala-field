@@ -4,10 +4,10 @@ namespace Froala\NovaFroalaField\Tests;
 
 use Laravel\Nova\Nova;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Database\Schema\Blueprint;
-use Froala\NovaFroalaField\FroalaFieldServiceProvider;
-use Laravel\Nova\NovaApplicationServiceProvider;
 use Laravel\Nova\NovaServiceProvider;
+use Illuminate\Database\Schema\Blueprint;
+use Laravel\Nova\NovaApplicationServiceProvider;
+use Froala\NovaFroalaField\FroalaFieldServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Froala\NovaFroalaField\Tests\Fixtures\TestResource;
 
