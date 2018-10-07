@@ -26,8 +26,6 @@ abstract class TestCase extends OrchestraTestCase
         Nova::resources([
             TestResource::class,
         ]);
-
-        Nova::routes()->register();
     }
 
     protected function getPackageProviders($app)

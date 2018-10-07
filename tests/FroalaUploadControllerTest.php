@@ -2,29 +2,14 @@
 
 namespace Froala\NovaFroalaField\Tests;
 
+use Illuminate\Support\Facades\Storage;
 use Froala\NovaFroalaField\Models\Attachment;
 use Froala\NovaFroalaField\Tests\Fixtures\Article;
-use Illuminate\Support\Str;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 use Froala\NovaFroalaField\Models\PendingAttachment;
 
 class FroalaUploadControllerTest extends TestCase
 {
-    protected $file;
-
-    protected $draftId;
-
-    public function setUp()
-    {
-        parent::setUp();
-
-        Storage::fake(static::DISK);
-
-        $this->draftId = Str::uuid();
-
-        $this->regenerateUpload();
-    }
+    use UploadsHelper;
 
     /** @test */
     public function store_pending_attachment()
@@ -70,7 +55,6 @@ class FroalaUploadControllerTest extends TestCase
     /** @test */
     public function detach_attachment()
     {
-
         $src = $this->uploadPendingFile()->json('link');
 
         $this->storeArticle();
@@ -106,33 +90,5 @@ class FroalaUploadControllerTest extends TestCase
         foreach ($fileNames as $fileName) {
             Storage::disk(static::DISK)->assertMissing($fileName);
         }
-    }
-
-    protected function regenerateUpload()
-    {
-        $this->file = UploadedFile::fake()->image('picture'.random_int(1,100).'.jpg');
-    }
-
-    /**
-     * @return \Illuminate\Foundation\Testing\TestResponse
-     */
-    protected function uploadPendingFile(): \Illuminate\Foundation\Testing\TestResponse
-    {
-        return $this->json('POST', 'nova-vendor/froala-field/articles/attachments/content', [
-            'draftId' => $this->draftId,
-            'attachment' => $this->file,
-        ]);
-    }
-
-    /**
-     * @return \Illuminate\Foundation\Testing\TestResponse
-     */
-    protected function storeArticle(): \Illuminate\Foundation\Testing\TestResponse
-    {
-        return $this->json('POST', 'nova-api/articles', [
-            'title' => 'Some title',
-            'content' => 'Some content',
-            'contentDraftId' => $this->draftId,
-        ]);
     }
 }
