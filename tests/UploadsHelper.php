@@ -2,6 +2,7 @@
 
 namespace Froala\NovaFroalaField\Tests;
 
+use Illuminate\Foundation\Testing\TestResponse;
 use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -28,21 +29,19 @@ trait UploadsHelper
         $this->file = UploadedFile::fake()->image('picture'.random_int(1, 100).'.jpg');
     }
 
-    /**
-     * @return \Illuminate\Foundation\Testing\TestResponse
-     */
-    protected function uploadPendingFile(): \Illuminate\Foundation\Testing\TestResponse
+    protected function uploadPendingFile(): TestResponse
     {
-        return $this->json('POST', 'nova-vendor/froala-field/articles/attachments/content', [
+        $url = config('nova.froala-field.attachments_driver') === 'trix'
+            ? '/nova-api/articles/trix-attachment/content'
+            : 'nova-vendor/froala-field/articles/attachments/content';
+
+        return $this->json('POST', $url, [
             'draftId' => $this->draftId,
             'attachment' => $this->file,
         ]);
     }
 
-    /**
-     * @return \Illuminate\Foundation\Testing\TestResponse
-     */
-    protected function storeArticle(): \Illuminate\Foundation\Testing\TestResponse
+    protected function storeArticle(): TestResponse
     {
         return $this->json('POST', 'nova-api/articles', [
             'title' => 'Some title',

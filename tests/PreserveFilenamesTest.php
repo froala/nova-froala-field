@@ -3,6 +3,7 @@
 namespace Froala\NovaFroalaField\Tests;
 
 use Froala\NovaFroalaField\Models\PendingAttachment;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 
 class PreserveFilenamesTest extends TestCase
@@ -33,5 +34,15 @@ class PreserveFilenamesTest extends TestCase
 
         // Assert the file was stored...
         Storage::disk(static::DISK)->assertExists($this->file->getClientOriginalName());
+    }
+
+    /** @test */
+    public function same_filename_error()
+    {
+        $this->uploadPendingFile();
+
+        $response = $this->uploadPendingFile();
+
+        $response->assertStatus(Response::HTTP_CONFLICT);
     }
 }
