@@ -31,7 +31,7 @@ composer require froala/nova-froala-field
 Next up, you must publish _Font Awesome_ fonts for display editor buttons:
 
 ```bash
-php artisan vendor:publish --provider=Froala\\NovaFroalaField\\FroalaFieldServiceProvider --tag=nova-froala-field-fonts
+php artisan vendor:publish --tag=nova-froala-field-fonts --provider=Froala\\NovaFroalaField\\FroalaFieldServiceProvider 
 ```
 
 ## Usage
@@ -65,7 +65,7 @@ class Article extends Resource
 To change any of _froala field_ config values, publish a config file:
 
 ```bash
-php artisan vendor:publish --provider=Froala\\NovaFroalaField\\FroalaFieldServiceProvider --tag=config
+php artisan vendor:publish --tag=config --provider=Froala\\NovaFroalaField\\FroalaFieldServiceProvider
 ```
 
 ## Customize Editor Options
@@ -138,7 +138,7 @@ Also you have ability to switch to the `trix` driver for using its upload system
 For using `froala` driver, publish and run a migration:
 
 ```bash
-php artisan vendor:publish --provider=Froala\\NovaFroalaField\\FroalaFieldServiceProvider --tag=migrations
+php artisan vendor:publish --tag=migrations --provider=Froala\\NovaFroalaField\\FroalaFieldServiceProvider 
 php artisan migrate
 ```
 
@@ -311,7 +311,7 @@ You can set max upload filesize for attachments. If set to null, max upload file
 According to _Froala_ [Display Edited Content](https://www.froala.com/wysiwyg-editor/docs/overview#frontend) documentation you should publish _Froala_ styles:
 
 ```bash
-php artisan vendor:publish --provider=Froala\\NovaFroalaField\\FroalaFieldServiceProvider --tag=froala-styles
+php artisan vendor:publish --tag=froala-styles --provider=Froala\\NovaFroalaField\\FroalaFieldServiceProvider 
 ```
 
 include into view where shows an edited content:
@@ -342,6 +342,16 @@ Froala::make('Content')->showOnIndex();
 Just click **Show Content**
 
 ![Index Field](docs/index-field.png)
+
+## 3rd Party Integrations
+
+To enable button that uses some 3rd party service and needs additional script inluding, like: *Embed.ly*, *Aviary* or *SCAYT Web SpellChecker*, you should publish 3rd party scripts:
+
+```bash
+php artisan vendor:publish --tag=nova-froala-field-plugins --provider=Froala\\NovaFroalaField\\FroalaFieldServiceProvider
+```
+
+Script will be dynamically imported when you enable `embedly` or `spellChecker` buttons or set `aviaryKey` api key.
 
 ## Advanced
 

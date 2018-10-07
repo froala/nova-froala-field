@@ -2,6 +2,7 @@
     <default-field :field="field" :errors="errors" :full-width-content="true">
         <template slot="field">
             <froala
+                v-if="!loading"
                 :id="field.name"
                 :tag="'textarea'"
                 :config="options"
@@ -16,6 +17,7 @@
 import { FormField, HandlesValidationErrors } from 'laravel-nova';
 
 import MediaConfigurator from '../MediaConfigurator';
+import PluginsLoader from '../PluginsLoader';
 
 export default {
     mixins: [HandlesValidationErrors, FormField],
@@ -30,10 +32,15 @@ export default {
                 value.apply(this);
             });
         }
+
+        new PluginsLoader(this.options, this.$toasted).registerPlugins().then((data) => {
+            this.loading = false;
+        })
     },
 
     data() {
         return {
+            loading: true,
             mediaConfigurator: new MediaConfigurator(this.resourceName, this.field, this.$toasted),
         };
     },
