@@ -63,7 +63,7 @@ class StorePendingAttachment
         ) {
             abort(response()->json([
                 'status' => Response::HTTP_CONFLICT,
-            ]), Response::HTTP_CONFLICT);
+            ], Response::HTTP_CONFLICT));
         }
     }
 
