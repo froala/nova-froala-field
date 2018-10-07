@@ -45,7 +45,8 @@
         }
     },
     "scripts": {
-        "test": "phpunit --colors=always"
+        "test": "phpunit --colors=always",
+        "test-coverage": "phpunit --colors=always --coverage-html coverage"
     },
     "extra": {
         "laravel": {

@@ -13,7 +13,7 @@ use Froala\NovaFroalaField\Tests\Fixtures\TestResource;
 
 abstract class TestCase extends OrchestraTestCase
 {
-    const DISK = 'avatars';
+    const DISK = 'public';
 
     public function setUp()
     {
