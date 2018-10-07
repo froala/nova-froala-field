@@ -91,4 +91,34 @@ class FroalaUploadControllerTest extends TestCase
             Storage::disk(static::DISK)->assertMissing($fileName);
         }
     }
+
+    /** @test */
+    public function delete_all_related_attachments()
+    {
+        $fileNames = [];
+
+        for ($i = 0; $i <= 5; ++$i) {
+            $this->uploadPendingFile();
+
+            $fileNames[] = $this->file->hashName();
+
+            $this->regenerateUpload();
+        }
+
+        foreach ($fileNames as $fileName) {
+            Storage::disk(static::DISK)->assertExists($fileName);
+        }
+
+        $articleResponse = $this->storeArticle();
+
+        $this->json('DELETE', 'nova-api/articles', [
+            'resources' => [
+                $articleResponse->json('id'),
+            ],
+        ]);
+
+        foreach ($fileNames as $fileName) {
+            Storage::disk(static::DISK)->assertMissing($fileName);
+        }
+    }
 }
