@@ -71,10 +71,10 @@ class FroalaFieldServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (! $this->app->runningInConsole() and request('froalaMode')) {
+        $this->mergeConfigFrom(__DIR__.'/../config/froala-field.php', 'nova.froala-field');
+
+        if (config('nova.froala-field.attachments_driver') === 'trix') {
             $this->app->bind(TrixAttachmentController::class, FroalaToTrixAttachmentAdapterController::class);
         }
-
-        $this->mergeConfigFrom(__DIR__.'/../config/froala-field.php', 'nova.froala-field');
     }
 }

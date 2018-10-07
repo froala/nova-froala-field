@@ -58,7 +58,6 @@ class MediaConfigurator {
 
             // Additional upload params.
             imageUploadParams: {
-                froalaMode: true,
                 _token: this._token,
                 draftId: this.field.draftId,
             },
@@ -154,7 +153,6 @@ class MediaConfigurator {
 
             // Additional upload params.
             fileUploadParams: {
-                froalaMode: true,
                 _token: this._token,
                 draftId: this.field.draftId,
             },
