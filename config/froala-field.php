@@ -8,7 +8,7 @@ return [
     |
     | Setup default values for any Froala editor option.
     |
-    | To view a list of all available options the Froala documentation
+    | To view a list of all available options checkout the Froala documentation
     | {@link https://www.froala.com/wysiwyg-editor/docs/options}
     |
     */
@@ -37,13 +37,13 @@ return [
     |--------------------------------------------------------------------------
     |
     | If you have used `Trix` previously and want to save the same flow with
-    | `Trix` attachments handlers and database tables you could use
+    | `Trix` attachments handlers and database tables you can use
     | "trix" driver.
     |
-    | * Warn that "trix" driver doesen't support image optimization
+    | *** Note that "trix" driver doesn't support image optimization
     | and file names preservation.
     |
-    | Recommended to use "froala" driver to be able to automatically
+    | It is recommended to use "froala" driver to be able to automatically
     | optimize uploaded images and preserve attachments file names.
     |
     | Supported: "froala", "trix"
@@ -66,15 +66,15 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Maximun Possible Size for Upload Files
+    | Maximum Possible Size for Uploaded Files
     |--------------------------------------------------------------------------
     |
-    | Customize max upload file size for incomming attachments.
-    | By default it set to "null", it means that default value
-    | retrieves from `upload_max_size` directive of php.ini file.
+    | Customize max upload filesize for uploaded attachments.
+    | By default it is set to "null", it means that default value is
+    | retrieved from `upload_max_size` directive of php.ini file.
     |
     | Format is the same as for `uploaded_max_size` directive.
-    | Visit faq page, to get more detail description.
+    | Check out FAQ page, to get more detail description.
     | {@link http://php.net/manual/en/faq.using.php#faq.using.shorthandbytes}
     |
     */

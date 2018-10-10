@@ -18,25 +18,25 @@ Full support of attaching Images, Files and Videos
 
 ![Form Field](docs/form-field.png)
 
-Notifications for _Froala_ events handles by [Toasted](https://nova.laravel.com/docs/1.0/customization/frontend.html#notifications) provided in Nova by default.
+Notifications for _Froala_ events are handled by [Toasted](https://nova.laravel.com/docs/1.0/customization/frontend.html#notifications) which is provided in _Nova_ by default.
 
 ## Installation
 
-You can install the package in to a Laravel app that uses [Nova](https://nova.laravel.com) via composer:
+You can install the package into a Laravel application that uses [Nova](https://nova.laravel.com) via composer:
 
 ```bash
 composer require froala/nova-froala-field
 ```
 
-Next up, you must publish _Font Awesome_ fonts for display editor buttons:
+Then, you must publish _Font Awesome_ fonts for displaying editor buttons:
 
 ```bash
-php artisan vendor:publish --tag=nova-froala-field-fonts --provider=Froala\\NovaFroalaField\\FroalaFieldServiceProvider 
+php artisan vendor:publish --tag=nova-froala-field-fonts --provider=Froala\\NovaFroalaField\\FroalaFieldServiceProvider
 ```
 
 ## Usage
 
-Just use the `Froala\NovaFroalaField\Froala` field in your Nova resource: 
+Just use the `Froala\NovaFroalaField\Froala` field in your Nova resource:
 
 ```php
 namespace App\Nova;
@@ -62,7 +62,7 @@ class Article extends Resource
 
 ## Override Config Values
 
-To change any of _froala field_ config values, publish a config file:
+To change any of config values for _froala field_, publish a config file:
 
 ```bash
 php artisan vendor:publish --tag=config --provider=Froala\\NovaFroalaField\\FroalaFieldServiceProvider
@@ -81,7 +81,7 @@ edit `nova.froala-field.options` value:
 |
 | Setup default values for any Froala editor option.
 |
-| To view a list of all available options the Froala documentation
+| To view a list of all available options check out the Froala documentation
 | {@link https://www.froala.com/wysiwyg-editor/docs/options}
 |
 */
@@ -127,15 +127,15 @@ public function fields(Request $request)
 
 ## Attachments
 
-**Nova Froala Field** provides native attachments driver which works similar to [Trix File Uploads](https://nova.laravel.com/docs/1.0/resources/fields.html#file-uploads), but with ability to optimizing images and preserve file names.
-Also you have ability to switch to the `trix` driver for using its upload system.
+**Nova Froala Field** provides native attachments driver which works similar to [Trix File Uploads](https://nova.laravel.com/docs/1.0/resources/fields.html#file-uploads), but with ability to optimize images and preserve file names.
+Also you have an ability to switch to the `trix` driver to use its upload system.
 
-* Recommended to use `froala` driver (enabled by default) to be able to use current and future
+* It's Recommended to use `froala` driver (enabled by default) to be able to use current and future
  additional features for attachments, provided by *Froala*.
 
 ### Froala Driver
 
-For using `froala` driver, publish and run a migration:
+To use `froala` driver, publish and run a migration:
 
 ```bash
 php artisan vendor:publish --tag=migrations --provider=Froala\\NovaFroalaField\\FroalaFieldServiceProvider 
@@ -145,7 +145,7 @@ php artisan migrate
 ### Trix Driver
 
 If previously you have used *Trix* attachments and you want to preserve behavior with same tables and handlers
-you are able to use `trix` driver in config file:
+you can use `trix` driver in config file:
 
 ```php
 /*
@@ -154,13 +154,13 @@ you are able to use `trix` driver in config file:
 |--------------------------------------------------------------------------
 |
 | If you have used `Trix` previously and want to save the same flow with
-| `Trix` attachments handlers and database tables you could use
+| `Trix` attachments handlers and database tables you can use
 | "trix" driver.
 |
-| * Warn that "trix" driver doesn't support image optimization
+| *** Note that "trix" driver doesn't support image optimization
 | and file names preservation.
 |
-| Recommended to use "froala" driver to be able to automatically
+| It is recommended to use "froala" driver to be able to automatically
 | optimize uploaded images and preserve attachments file names.
 |
 | Supported: "froala", "trix"
@@ -174,7 +174,7 @@ you are able to use `trix` driver in config file:
 
 ### Attachments Usage
 
-Just like with _Trix_ to allow users upload images, files and videos, chain the `withFiles` method onto the field's definition. When calling the `withFiles` method, you should pass the name of the filesystem disk that photos should be stored on:
+To allow users to upload images, files and videos, just like with _Trix_ field, chain the `withFiles` method onto the field's definition. When calling the `withFiles` method, you should pass the name of the filesystem disk that photos should be stored on:
 
 ```php
 use Froala\NovaFroalaField\Froala;
@@ -204,7 +204,7 @@ protected function schedule(Schedule $schedule)
 
 #### Filenames Preservation
 
-By default generates a unique ID to serve as the file name according to `store` [method specification](https://laravel.com/docs/master/filesystem#file-uploads).
+A unique ID is generated by default to serve as the file name according to `store` [method specification](https://laravel.com/docs/master/filesystem#file-uploads).
 If you want to preserve original client filenames for uploaded attachments, change `preserve_file_names` option in config file to `true`.
 
 ```php
@@ -225,9 +225,9 @@ If you want to preserve original client filenames for uploaded attachments, chan
 
 #### Images Optimization
 
-All upload images will be optimized by default by [spatie/image-optimizer](https://github.com/spatie/image-optimizer).
+All uploaded images will be optimized by default by [spatie/image-optimizer](https://github.com/spatie/image-optimizer).
 
-You can disable image optimization in configuration:
+You can disable image optimization in config file:
 
 ```php
 /*
@@ -253,7 +253,7 @@ Or set custom optimization options for any optimizer:
 |--------------------------------------------------------------------------
 |
 | These are the optimizers that will be used by default.
-| You could setup custom parameters for each optimizer.
+| You can setup custom parameters for each optimizer.
 |
 */
 
@@ -283,20 +283,20 @@ Or set custom optimization options for any optimizer:
 
 ### Upload Max Filesize
 
-You can set max upload filesize for attachments. If set to null, max upload filesize equals to _php.ini_ `upload_max_filesize` directive value.
+You can set max upload filesize for attachments. If set to `null`, max upload filesize equals to _php.ini_ `upload_max_filesize` directive value.
 
 ```php
 /*
 |--------------------------------------------------------------------------
-| Maximun Possible Size for Upload Files
+| Maximum Possible Size for Uploaded Files
 |--------------------------------------------------------------------------
 |
-| Customize max upload file size for incoming attachments.
-| By default it set to "null", it means that default value
-| retrieves from `upload_max_size` directive of php.ini file.
+| Customize max upload filesize for uploaded attachments.
+| By default it is set to "null", it means that default value is
+| retrieved from `upload_max_size` directive of php.ini file.
 |
 | Format is the same as for `uploaded_max_size` directive.
-| Visit faq page, to get more detail description.
+| Check out FAQ page, to get more detail description.
 | {@link http://php.net/manual/en/faq.using.php#faq.using.shorthandbytes}
 |
 */
@@ -314,14 +314,14 @@ According to _Froala_ [Display Edited Content](https://www.froala.com/wysiwyg-ed
 php artisan vendor:publish --tag=froala-styles --provider=Froala\\NovaFroalaField\\FroalaFieldServiceProvider 
 ```
 
-include into view where shows an edited content:
+include into view where an edited content is shown:
 
 ```blade
 <!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
 <link href="{{ asset('css/vendor/froala_styles.min.css') }}" rel="stylesheet" type="text/css" />
 ```
 
-Also, you should make sure that you put the edited content inside an element that has the class fr-view:
+Also, you should make sure that you put the edited content inside an element that has the `.fr-view` class:
 
 ```html
 <div class="fr-view">
@@ -331,7 +331,7 @@ Also, you should make sure that you put the edited content inside an element tha
 
 ## Show on Index Page
 
-You have ability to show field content on resource index page in popup window
+You have an ability to show field content on resource index page in popup window:
 
 ```php
 use Froala/NovaFroalaField/Froala;
@@ -345,7 +345,7 @@ Just click **Show Content**
 
 ## 3rd Party Integrations
 
-To enable button that uses some 3rd party service and needs additional script inluding, like: *Embed.ly*, *Aviary* or *SCAYT Web SpellChecker*, you should publish 3rd party scripts:
+To enable a button that uses some a 3rd party service and needs additional script inluding, like: *Embed.ly*, *Aviary* or *SCAYT Web SpellChecker*, you should publish 3rd party scripts:
 
 ```bash
 php artisan vendor:publish --tag=nova-froala-field-plugins --provider=Froala\\NovaFroalaField\\FroalaFieldServiceProvider
@@ -369,7 +369,7 @@ window.froala = {
 };
 ```
 
-to all callbacks provided in `window.froala.events`, automatically applied context of _VueJS_ form field, you can work with `this` inside callbacks like with _Vue_ instance component.
+to all callbacks provided in `window.froala.events`, the context of _VueJS_ form field component is automatically applied, you can work with `this` inside callbacks like with _Vue_ instance component.
 
 After that, load the js file into _Nova_ scripts in `NovaServiceProvider::boot` method:
 
@@ -386,7 +386,7 @@ public function boot()
 
 ### Customize Attachment Handlers
 
-You are be able to change any of attachment handlers by pass a `callable`:
+You can change any of attachment handlers by passing a `callable`:
 
 ```php
 use App\Nova\Handlers\{
