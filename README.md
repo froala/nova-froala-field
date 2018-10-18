@@ -5,7 +5,6 @@
 <p align="center">
   <a href="https://packagist.org/packages/froala/nova-froala-field"><img src="https://img.shields.io/packagist/v/froala/nova-froala-field.svg?style=flat-square" alt="Latest Version on Packagist"></img></a>
   <a href="https://travis-ci.org/froala/nova-froala-field"><img src="https://img.shields.io/travis/froala/nova-froala-field/master.svg?style=flat-square" alt="Build Status"></img></a>
-  <a href="https://scrutinizer-ci.com/g/froala/nova-froala-field"><img src="https://img.shields.io/scrutinizer/g/froala/nova-froala-field.svg?style=flat-square" alt="Quality Score"></a>
   <a href="https://packagist.org/packages/froala/nova-froala-field"><img src="https://img.shields.io/packagist/dt/froala/nova-froala-field.svg?style=flat-square" alt="Total Downloads"></a>
 </p>
 
