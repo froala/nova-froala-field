@@ -3,6 +3,7 @@
 namespace Froala\NovaFroalaField\Tests\Fixtures;
 
 use Laravel\Nova\Resource;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Froala\NovaFroalaField\Froala;
 use Froala\NovaFroalaField\Tests\TestCase;
@@ -16,7 +17,7 @@ class TestResource extends Resource
         return 'articles';
     }
 
-    public function fields($request)
+    public function fields(Request $request)
     {
         return [
             Text::make('Title'),
