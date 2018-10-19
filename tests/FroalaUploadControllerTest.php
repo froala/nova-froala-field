@@ -73,7 +73,7 @@ class FroalaUploadControllerTest extends TestCase
     {
         $fileNames = [];
 
-        for ($i = 0; $i <= 3; ++$i) {
+        for ($i = 0; $i <= 3; $i++) {
             $this->uploadPendingFile();
 
             $fileNames[] = $this->file->hashName();
@@ -97,7 +97,7 @@ class FroalaUploadControllerTest extends TestCase
     {
         $fileNames = [];
 
-        for ($i = 0; $i <= 5; ++$i) {
+        for ($i = 0; $i <= 5; $i++) {
             $this->uploadPendingFile();
 
             $fileNames[] = $this->file->hashName();
