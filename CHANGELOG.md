@@ -4,19 +4,14 @@ All Notable changes to `froala/nova-froala-field` will be documented in this fil
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## NEXT - YYYY-MM-DD
+## 1.1.1 - 2018-12-04
 
-### Added
-- Nothing
+- Prevented jump to global search on pressing "/"
 
-### Deprecated
-- Nothing
+## 1.1.0 - 2018-11-02
 
-### Fixed
-- Nothing
+- Updated to latest **froala-editor@2.9.0** version.
 
-### Removed
-- Nothing
+## 1.0.1 - 2018-10-19
 
-### Security
-- Nothing
+- Added minimum required dependencies versions
