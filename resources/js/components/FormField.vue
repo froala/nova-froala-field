@@ -1,5 +1,5 @@
 <template>
-    <default-field :field="field" :errors="errors" :full-width-content="true">
+    <default-field @keydown.native.stop :field="field" :errors="errors" :full-width-content="true">
         <template slot="field">
             <froala
                 v-if="!loading"
