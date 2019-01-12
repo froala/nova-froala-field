@@ -37,10 +37,7 @@ class AttachedImagesList
         $Storage = Storage::disk($this->field->disk);
 
         foreach ($Storage->allFiles() as $file) {
-            if (! in_array(
-                (new File($Storage->path($file)))->guessExtension(),
-                ['jpeg', 'png', 'gif', 'bmp', 'svg']
-            )) {
+            if (! @getimagesize($Storage->url($file))) {
                 continue;
             }
 
