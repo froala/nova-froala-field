@@ -14,6 +14,8 @@ return [
     */
 
     'options' => [
+        // 'key' => env('FROALA_KEY'),
+
         'toolbarButtons' => [
             'bold',
             'italic',
