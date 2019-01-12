@@ -4,6 +4,12 @@ All Notable changes to `froala/nova-froala-field` will be documented in this fil
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## 1.1.2 - 2019-01-12
+
+- Updated Froala version to 2.9.1
+- Improved get images list
+- Readme updated
+
 ## 1.1.1 - 2018-12-04
 
 - Prevented jump to global search on pressing "/"
