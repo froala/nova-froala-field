@@ -280,6 +280,8 @@ Or set custom optimization options for any optimizer:
 ],
 ```
 
+> Image optimization currently supported only for local filesystems
+
 ### Upload Max Filesize
 
 You can set max upload filesize for attachments. If set to `null`, max upload filesize equals to _php.ini_ `upload_max_filesize` directive value.

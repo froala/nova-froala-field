@@ -88,6 +88,8 @@ return [
     |
     | Optimize all uploaded images by default.
     |
+    | * Currently not supported for cloud filesystems
+    |
     */
 
     'optimize_images' => true,
