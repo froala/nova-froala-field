@@ -5,7 +5,6 @@ namespace Froala\NovaFroalaField\Handlers;
 use Illuminate\Http\Request;
 use Froala\NovaFroalaField\Froala;
 use Illuminate\Support\Facades\Storage;
-use Symfony\Component\HttpFoundation\File\File;
 
 class AttachedImagesList
 {
