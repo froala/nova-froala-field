@@ -4,6 +4,10 @@ All Notable changes to `froala/nova-froala-field` will be documented in this fil
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## 1.1.4 - 2019-02-01
+
+Added missing return when custom fill callback called
+
 ## 1.1.3 - 2019-01-31
 
 Improved creating attachments on resource creation,

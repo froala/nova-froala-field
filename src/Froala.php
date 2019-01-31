@@ -137,7 +137,7 @@ class Froala extends Trix
     protected function fillAttribute(NovaRequest $request, $requestAttribute, $model, $attribute)
     {
         if (isset($this->fillCallback)) {
-            call_user_func(
+            return call_user_func(
                 $this->fillCallback,
                 $request,
                 $model,
