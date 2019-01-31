@@ -128,10 +128,11 @@ class Froala extends Trix
     /**
      * Hydrate the given attribute on the model based on the incoming request.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-     * @param  string  $requestAttribute
-     * @param  object  $model
-     * @param  string  $attribute
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest $request
+     * @param  string $requestAttribute
+     * @param  object $model
+     * @param  string $attribute
+     * @return \Closure|null
      */
     protected function fillAttribute(NovaRequest $request, $requestAttribute, $model, $attribute)
     {
@@ -158,25 +159,13 @@ class Froala extends Trix
                 ? FroalaPendingAttachment::class
                 : TrixPendingAttachment::class;
 
-            if ($model->exists) {
+            return function () use ($request, $requestAttribute, $model, $attribute, $pendingAttachmentClass) {
                 $pendingAttachmentClass::persistDraft(
                     $request->{$this->attribute.'DraftId'},
                     $this,
                     $model
                 );
-            } else {
-                $modelClass = get_class($model);
-
-                $modelClass::saved(function ($model) use ($request, $pendingAttachmentClass) {
-                    if ($model->wasRecentlyCreated) {
-                        $pendingAttachmentClass::persistDraft(
-                            $request->{$this->attribute.'DraftId'},
-                            $this,
-                            $model
-                        );
-                    }
-                });
-            }
+            };
         }
     }
 

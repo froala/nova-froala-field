@@ -39,8 +39,10 @@ class FroalaUploadControllerTest extends TestCase
         $response = $this->storeArticle();
 
         $response->assertJson([
-            'title' => 'Some title',
-            'content' => 'Some content',
+            'resource' => [
+                'title' => 'Some title',
+                'content' => 'Some content',
+            ]
         ]);
 
         $this->assertDatabaseHas((new Attachment)->getTable(), [

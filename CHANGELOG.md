@@ -4,6 +4,11 @@ All Notable changes to `froala/nova-froala-field` will be documented in this fil
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## 1.1.3 - 2019-01-31
+
+Improved creating attachments on resource creation,
+according to _Trix_ fix in **Nova v1.1.5**. Now you can use the `trix` driver without any issues.
+
 ## 1.1.2 - 2019-01-12
 
 - Updated Froala version to 2.9.1
