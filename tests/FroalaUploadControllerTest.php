@@ -2,6 +2,7 @@
 
 namespace Froala\NovaFroalaField\Tests;
 
+use Laravel\Nova\Nova;
 use Illuminate\Support\Facades\Storage;
 use Froala\NovaFroalaField\Models\Attachment;
 use Froala\NovaFroalaField\Tests\Fixtures\Article;
@@ -38,12 +39,19 @@ class FroalaUploadControllerTest extends TestCase
 
         $response = $this->storeArticle();
 
-        $response->assertJson([
-            'resource' => [
+        if (version_compare(Nova::version(), '1.3.1') === -1) {
+            $response->assertJson([
                 'title' => 'Some title',
                 'content' => 'Some content',
-            ]
-        ]);
+            ]);
+        } else {
+            $response->assertJson([
+                'resource' => [
+                    'title' => 'Some title',
+                    'content' => 'Some content',
+                ],
+            ]);
+        }
 
         $this->assertDatabaseHas((new Attachment)->getTable(), [
             'disk' => static::DISK,
