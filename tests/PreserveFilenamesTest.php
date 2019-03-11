@@ -12,7 +12,7 @@ class PreserveFilenamesTest extends TestCase
         setUp as uplaodsSetUp;
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->uplaodsSetUp();
 

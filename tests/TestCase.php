@@ -6,6 +6,7 @@ use Laravel\Nova\Nova;
 use Illuminate\Support\Facades\Route;
 use Laravel\Nova\NovaServiceProvider;
 use Illuminate\Database\Schema\Blueprint;
+use Froala\NovaFroalaField\Tests\Fixtures\User;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use Froala\NovaFroalaField\FroalaFieldServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
@@ -15,7 +16,9 @@ abstract class TestCase extends OrchestraTestCase
 {
     const DISK = 'public';
 
-    public function setUp()
+    public static $user;
+
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -26,6 +29,14 @@ abstract class TestCase extends OrchestraTestCase
         Nova::resources([
             TestResource::class,
         ]);
+
+        self::$user = self::$user ?? User::create([
+            'name' => 'Test User',
+            'email' => 'test@user.com',
+            'password' => 'secret',
+        ]);
+
+        $this->actingAs(self::$user);
     }
 
     protected function getPackageProviders($app)
@@ -71,6 +82,13 @@ abstract class TestCase extends OrchestraTestCase
             $table->increments('id');
             $table->string('title');
             $table->string('content');
+        });
+
+        $app['db']->connection()->getSchemaBuilder()->create('users', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('email');
+            $table->string('password');
         });
     }
 }

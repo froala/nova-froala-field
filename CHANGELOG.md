@@ -4,6 +4,11 @@ All Notable changes to `froala/nova-froala-field` will be documented in this fil
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+# 2.0.0 - 2019-03-11
+
+- add support for Laravel 5.8 and Nova 2.0
+- _Froala_ version update
+
 ## 1.1.4 - 2019-02-01
 
 Added missing return when custom fill callback called
