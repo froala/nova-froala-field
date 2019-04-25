@@ -33,6 +33,8 @@ Then, you must publish _Font Awesome_ fonts for displaying editor buttons:
 php artisan vendor:publish --tag=nova-froala-field-fonts --provider=Froala\\NovaFroalaField\\FroalaFieldServiceProvider
 ```
 
+**\*** To use _Nova Froala Field_ with local **Nova@^2.0** installation and **Laravel@^5.8**, use **Nova Froala Field@^2.1**
+
 ## Usage
 
 Just use the `Froala\NovaFroalaField\Froala` field in your Nova resource:

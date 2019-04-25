@@ -27,7 +27,7 @@
     "require": {
         "php": ">=7.1.0",
         "laravel/framework": "^5.8",
-        "laravel/nova": "^2.0",
+        "laravel/nova": "*",
         "league/flysystem": "^1.0.8",
         "spatie/image-optimizer": "^1.1"
     },
