@@ -22,7 +22,9 @@
         "prettier": "^1.14.3"
     },
     "dependencies": {
+        "@babel/runtime-corejs2": "^7.4.4",
         "babel-plugin-syntax-dynamic-import": "^6.18.0",
+        "babel-runtime": "^6.26.0",
         "vue": "^2.5.0",
         "vue-froala-wysiwyg": "^2.9.0"
     }
