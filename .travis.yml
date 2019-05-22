@@ -7,12 +7,8 @@ env:
   matrix:
   - COMPOSER_FLAGS="--prefer-lowest"
   - COMPOSER_FLAGS=""
-  global:
-  - secure: XSBvMqcy8Qbqmq7n89JlGWQxuHeZaZ4K6a9YqjOWjGFEUg7yv6zH5o33qajRqg4Okvw7sTfcvmEinjESGjjsX14I/KwELYGOBnCxhvGHdrzpH8zHmT9gtznKlLf6hzpoKElkMLFWbscgji72aivQpjdeV5HfKKCOhwbGUZTnanHcL9PGeflQpQv+Mf0l/ivj2fDT8GPhmR3PDFLsP8sov7n0OMUev26eZaK5bcH8FvFHkKsMPlQ/9fZdynWcaBpiCtKFTnr1SwrkiCZ762GwUA+MRCLFNhYhphf9Qw27LxzndeFtRtXeeC96eK0fD0xNGq715H4iGUnGHIQSGQmCbnXhiKRea9g5Ok/CSQqPv6ExcCAGTzOx2jz+hL8d6XKONvfb8yiURHhzBOIPd0iIov0SeblOvxLWpbfxd3Mo2sfp+HB+cHIvLyy2fOflWIkHMWD4tgyufOBrRp5XkOxd/phNnsuxITfGwy3W6A/gBiP1i64IDu4itW71NOvvHu8ufFweKLrmEPAxcIJay4PEVFgzFulSgocyg2NJmOciuNt194tggpAJY0e9+d3o91qN/mR5n4S7UXM0aEAye9BQPncfu9PJsS+GuM1ua3vGRC2qJWvd4BrC652NLrI9e2m+sD/x5xTgADD8IAj8nlICihpM8C0OSJTA7nxjxFAtveo=
-  - secure: a12JKJnVdzfonqnJKwJHEQGksdVQAtTmhnGH67rdD9CvAMfU3nxKGuTyGwqJi8zQvgqoQElOVSbHQRiuarwE1hSaHR42QwmTeV8aIM02saSv/1ysT1scQKP7AtV4RFbpRHD3fHuCeBb/ZouZPXPlafk8mWO/tv+nkM72TMWGV0x0SGV0sL5dcQ1yr73N2tD+qXF15aBG/EGrFZixfRtnEpDxDNOwQYW+dY6WinzOBrdKFKKRqaYge6oo6kHkW83Euj5jjZfG/51kafJC/TPnO0otAN0HFgLOaPvbX2/ESkoiszGNYehU60r8TuJsgyLzWXIDLVA1f+duwhXNTasSQxGWSPJbVYBS8SP7RXYdqTV5KsihTA9ym/i/V/R5clMwkGC8Gcs4QBs7nzDTse7OoEBk0tUTwLqCUxBfO1kYQe+4INo6oWS5IGQmWvyETITwlQm1CmJOq3iihvGLJOVjGxmZmInGMDd51DH0YskuQrZ0Rct8AOJ7mHh+ByCt9eb/mQvLS8RS+Xgo+fu/HwBUhPmBiijmEKNjlkHz8BaHs98poxlSICYFGBvfYqY360evaxL9lrT9vYFj6r3XMdyKrE1uGQDlFWhOq4NDFx/JXbAT4BSvDaIYr/JLCapCE8x2PXlbO65NUXL1KKMbUJfoGz1XnimR/1cseHeGxwsO6/4=
 install:
-- echo "{\"http-basic\":{\"nova.laravel.com\":{\"username\":\"${NOVA_USERNAME}\",\"password\":\"${NOVA_PASSWORD}\"}}}"
-  > auth.json
+- composer config http-basic.nova.laravel.com ${NOVA_USERNAME} ${NOVA_PASSWORD}
 before_script:
 - travis_retry composer self-update
 - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
