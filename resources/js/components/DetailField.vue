@@ -12,11 +12,11 @@
                 </div>
 
                 <a
-                        v-if="!field.shouldShow"
-                        @click="toggle"
-                        class="cursor-pointer dim inline-block text-primary font-bold"
-                        :class="{ 'mt-6': expanded }"
-                        aria-role="button"
+                    v-if="!field.shouldShow"
+                    @click="toggle"
+                    class="cursor-pointer dim inline-block text-primary font-bold"
+                    :class="{ 'mt-6': expanded }"
+                    aria-role="button"
                 >
                     {{ showHideLabel }}
                 </a>

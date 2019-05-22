@@ -26,7 +26,7 @@ class FroalaImageManagerControllerTest extends TestCase
             $this->regenerateUpload();
         }
 
-        $response = $this->get('nova-vendor/froala-field/image-manager?resource=articles&field=content');
+        $response = $this->get('nova-vendor/froala-field/articles/image-manager?field=content');
 
         usort($images, function ($a, $b) {
             return strcasecmp($a['url'], $b['url']);
@@ -42,9 +42,8 @@ class FroalaImageManagerControllerTest extends TestCase
 
         $this->storeArticle();
 
-        $this->json('DELETE', 'nova-vendor/froala-field/image-manager', [
+        $this->json('DELETE', 'nova-vendor/froala-field/articles/image-manager', [
             'src' => $src,
-            'resource' => 'articles',
             'field' => 'content',
         ]);
 

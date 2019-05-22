@@ -107,10 +107,9 @@ class MediaConfigurator {
 
     get imageManagerLoadConfig() {
         return {
-            imageManagerLoadURL: '/nova-vendor/froala-field/image-manager',
+            imageManagerLoadURL: `/nova-vendor/froala-field/${this.resource}/image-manager`,
 
             imageManagerLoadParams: {
-                resource: this.resource,
                 field: this.field.attribute,
             },
         };
@@ -118,13 +117,12 @@ class MediaConfigurator {
 
     get imageManagerDeleteConfig() {
         return {
-            imageManagerDeleteURL: '/nova-vendor/froala-field/image-manager',
+            imageManagerDeleteURL: `/nova-vendor/froala-field/${this.resource}/image-manager`,
 
             imageManagerDeleteMethod: 'DELETE',
 
             imageManagerDeleteParams: {
                 _token: this._token,
-                resource: this.resource,
                 field: this.field.attribute,
             },
         };
