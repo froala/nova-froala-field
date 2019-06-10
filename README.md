@@ -368,6 +368,14 @@ php artisan vendor:publish --tag=nova-froala-field-plugins --provider=Froala\\No
 
 Script will be dynamically imported when you enable `embedly` or `spellChecker` buttons or set `aviaryKey` api key.
 
+**Note**:
+
+> If you have any problems with loading 3rd party plugins, try to republish it
+
+```bash
+php artisan vendor:publish --tag=nova-froala-field-plugins --force
+```
+
 ## Advanced
 
 ### Custom Event Handlers

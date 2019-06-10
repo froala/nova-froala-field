@@ -4,6 +4,11 @@ All Notable changes to `froala/nova-froala-field` will be documented in this fil
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## 2.2.1 - 2019-06-10
+
+- Fixed dynamic import of 3rd party plugins
+- Downgraded laravel-mix to `^1.0` for providing better support with Laravel Nova
+
 ## 2.2.0 - 2019-05-22
 
 - Fixed issue with image manager caused by latest Nova update

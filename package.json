@@ -17,7 +17,7 @@
         "eslint": "^5.16.0",
         "eslint-config-prettier": "^4.3.0",
         "eslint-plugin-vue": "^5.2.2",
-        "laravel-mix": "^3.0",
+        "laravel-mix": "^1.0",
         "laravel-nova": "^1.0",
         "prettier": "^1.15.0",
         "resolve-url-loader": "2.3.1",
@@ -26,8 +26,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "@babel/plugin-syntax-dynamic-import": "^7.2.0",
         "@babel/runtime-corejs2": "^7.4.5",
+        "babel-plugin-syntax-dynamic-import": "^6.18.0",
         "vue": "^2.6.0",
         "vue-froala-wysiwyg": "^2.9.0"
     }
