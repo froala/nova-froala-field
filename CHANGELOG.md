@@ -4,6 +4,13 @@ All Notable changes to `froala/nova-froala-field` will be documented in this fil
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## 3.0.0 -2019-07-03
+
+- Upgraded Froala to **3.0.1** version!
+- Fixed an error when no toolbarButtons provided
+- Font Awesome 5 support
+- TUI Advanced Image Editor support
+
 ## 2.2.1 - 2019-06-10
 
 - Fixed dynamic import of 3rd party plugins

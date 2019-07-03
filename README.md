@@ -19,6 +19,10 @@ Full support of attaching Images, Files and Videos
 
 Notifications for _Froala_ events are handled by [Toasted](https://nova.laravel.com/docs/1.0/customization/frontend.html#notifications) which is provided in _Nova_ by default.
 
+## Upgrading
+
+For upgrading to **Froala 3**, check out – [Upgrading Instructions](UPGRADING.md).
+
 ## Installation
 
 You can install the package into a Laravel application that uses [Nova](https://nova.laravel.com) via composer:
@@ -26,14 +30,6 @@ You can install the package into a Laravel application that uses [Nova](https://
 ```bash
 composer require froala/nova-froala-field
 ```
-
-Then, you must publish _Font Awesome_ fonts for displaying editor buttons:
-
-```bash
-php artisan vendor:publish --tag=nova-froala-field-fonts --provider=Froala\\NovaFroalaField\\FroalaFieldServiceProvider
-```
-
-**\*** To use _Nova Froala Field_ with local **Nova@^2.0** installation and **Laravel@^5.8**, use **Nova Froala Field@^2.1**
 
 ## Usage
 
@@ -89,19 +85,25 @@ edit `nova.froala-field.options` value:
 
 'options' => [
     'toolbarButtons' => [
-        'bold',
-        'italic',
-        'underline',
-        '|',
-        'formatOL',
-        'formatUL',
-        '|',
-        'insertImage',
-        'insertFile',
-        'insertLink',
-        'insertVideo',
-        '|',
-        'html',
+        [
+            'bold',
+            'italic',
+            'underline',
+        ],
+        [
+            'formatOL',
+            'formatUL',
+        ],
+        [
+            'insertImage',
+            'insertFile',
+            'insertLink',
+            'insertVideo',
+        ],
+        [
+            'embedly',
+            'html',
+        ],
     ],
 ],
 
@@ -360,13 +362,47 @@ To setup your license key, uncomment `key` option in the config file and set `FR
 
 ## 3rd Party Integrations
 
-To enable a button that uses some a 3rd party service and needs additional script inluding, like: *Embed.ly*, *Aviary* or *SCAYT Web SpellChecker*, you should publish 3rd party scripts:
+To enable a button that uses some a 3rd party service and needs additional script inluding, like: *Embed.ly*, *TUI Advanced Image Editor* or *SCAYT Web SpellChecker*, you should publish 3rd party scripts:
 
 ```bash
 php artisan vendor:publish --tag=nova-froala-field-plugins --provider=Froala\\NovaFroalaField\\FroalaFieldServiceProvider
 ```
 
-Script will be dynamically imported when you enable `embedly` or `spellChecker` buttons or set `aviaryKey` api key.
+Script will be dynamically imported when you enable `embedly` or `spellChecker` buttons.
+
+### TUI Advanced Image Editor
+
+If you want to use _TUI Image Editor_ to add advanced image editing options, switch `tuiEnable` option to `true`:
+
+```php
+'options' => [
+    // 'key' => env('FROALA_KEY'),
+
+    // 'tuiEnable' => true,
+
+    //...
+],
+```
+
+### Font Awesome 5
+
+If you have a [Font Awesome Pro license](https://fontawesome.com), you can enable using the regular icons instead of
+the solid ones by using the iconsTemplate option.
+
+Add `iconsTemplate` config value into `froala-field.php` config:
+
+```php
+'options' => [
+    // 'key' => env('FROALA_KEY'),
+
+   'iconsTemplate' => 'font_awesome_5',
+   // If you want to use the regular/light icons, change the template to the following.
+   // iconsTemplate: 'font_awesome_5r'
+   // iconsTemplate: 'font_awesome_5l'
+   
+   //...
+],
+```
 
 **Note**:
 
@@ -385,9 +421,9 @@ If you want to setup custom event handlers for froala editor instance, create js
 ```javascript
 window.froala = {
     events: {
-        'froalaEditor.image.error': (e, editor, error, response) => {},
-        'froalaEditor.imageManager.error': (e, editor, error, response) => {},
-        'froalaEditor.file.error': (e, editor, error, response) => {},
+        'image.error': (error, response) => {},
+        'imageManager.error': (error, response) => {},
+        'file.error': (error, response) => {},
     }
 };
 ```
