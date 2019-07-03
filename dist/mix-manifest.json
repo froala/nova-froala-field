@@ -1,6 +1,6 @@
 {
     "/vendor/nova/froala/spell_checker.min.js": "/vendor/nova/froala/spell_checker.min.js",
-    "/vendor/nova/froala/image_aviary.min.js": "/vendor/nova/froala/image_aviary.min.js",
+    "/vendor/nova/froala/image_tui.min.js": "/vendor/nova/froala/image_tui.min.js",
     "/vendor/nova/froala/embedly.min.js": "/vendor/nova/froala/embedly.min.js",
     "/js/field.js": "/js/field.js",
     "/css/field.css": "/css/field.css",

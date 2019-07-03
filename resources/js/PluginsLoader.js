@@ -61,7 +61,7 @@ class PluginsLoader {
             buttons.push(typeof this.options[prop] === 'undefined' ? null : this.options[prop]);
         }
 
-        return buttons.flat();
+        return buttons.flat(2);
     }
 
     errorPluginLoadNotification(name) {
