@@ -14,22 +14,29 @@ return [
     */
 
     'options' => [
-        // 'key' => env('FROALA_KEY'),
+        //'key' => env('FROALA_KEY'),
+        //'iconsTemplate' => 'font_awesome_5',
+        //'tuiEnable' => true,
 
         'toolbarButtons' => [
-            'bold',
-            'italic',
-            'underline',
-            '|',
-            'formatOL',
-            'formatUL',
-            '|',
-            'insertImage',
-            'insertFile',
-            'insertLink',
-            'insertVideo',
-            '|',
-            'html',
+            [
+                'bold',
+                'italic',
+                'underline',
+            ],
+            [
+                'formatOL',
+                'formatUL',
+            ],
+            [
+                'insertImage',
+                'insertFile',
+                'insertLink',
+                'insertVideo',
+            ],
+            [
+                'html',
+            ],
         ],
     ],
 
