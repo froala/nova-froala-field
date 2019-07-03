@@ -7,6 +7,10 @@ class PluginsLoader {
     async registerPlugins() {
         let allButtons = _.merge(...this.getRequestedButtons());
 
+        if (_.isEmpty(allButtons)) {
+            return true;
+        }
+
         if (allButtons.includes('embedly')) {
             try {
                 await import(
@@ -29,14 +33,14 @@ class PluginsLoader {
             }
         }
 
-        if (this.options.hasOwnProperty('aviaryKey')) {
+        if (this.options.tuiEnable) {
             try {
                 await import(
-                    /* webpackChunkName: "image_aviary.min" */
-                    'froala-editor/js/third_party/image_aviary.min'
+                    /* webpackChunkName: "image_tui.min" */
+                    'froala-editor/js/third_party/image_tui.min.js'
                 );
             } catch (e) {
-                this.errorPluginLoadNotification('Aviary')
+                this.errorPluginLoadNotification('TUI Advanced Image Editor')
             }
         }
 
@@ -57,7 +61,7 @@ class PluginsLoader {
             buttons.push(typeof this.options[prop] === 'undefined' ? null : this.options[prop]);
         }
 
-        return buttons;
+        return buttons.flat();
     }
 
     errorPluginLoadNotification(name) {

@@ -3,6 +3,7 @@
 namespace Froala\NovaFroalaField;
 
 use Laravel\Nova\Nova;
+use Illuminate\Support\Str;
 use Laravel\Nova\Events\ServingNova;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -25,11 +26,23 @@ class FroalaFieldServiceProvider extends ServiceProvider
         Nova::serving(function (ServingNova $event) {
             Nova::script('nova-froala-field', __DIR__.'/../dist/js/field.js');
             Nova::style('nova-froala-field', __DIR__.'/../dist/css/field.css');
-        });
 
-        $this->publishes([
-            __DIR__.'/../dist/fonts/' => public_path('vendor/nova/fonts'),
-        ], 'nova-froala-field-fonts');
+            if ($this->app['config']->get('nova.froala-field.options.tuiEnable')) {
+                Nova::style('tui-editor', 'https://cdn.jsdelivr.net/npm/tui-image-editor@3.2.2/dist/tui-image-editor.css');
+                Nova::style('tui-color-picker', 'https://uicdn.toast.com/tui-color-picker/latest/tui-color-picker.css');
+
+                Nova::script('fabric', 'https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.7/fabric.min.js');
+                Nova::script('tui-codesnippet', 'https://cdn.jsdelivr.net/npm/tui-code-snippet@1.4.0/dist/tui-code-snippet.min.js');
+                Nova::script('tui-image-editor', 'https://cdn.jsdelivr.net/npm/tui-image-editor@3.2.2/dist/tui-image-editor.min.js');
+            }
+
+            if (Str::startsWith(
+                $this->app['config']->get('nova.froala-field.options.iconsTemplate'),
+                'font_awesome_5'
+            )) {
+                Nova::script('font-awesome', 'https://use.fontawesome.com/releases/v5.0.8/js/all.js');
+            }
+        });
 
         $this->publishes([
             __DIR__.'/../dist/vendor/nova/froala' => public_path('vendor/nova/froala'),
