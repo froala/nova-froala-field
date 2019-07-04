@@ -5,7 +5,7 @@ class PluginsLoader {
     }
 
     async registerPlugins() {
-        let allButtons = _.merge(...this.getRequestedButtons());
+        let allButtons = this.getRequestedButtons();
 
         if (_.isEmpty(allButtons)) {
             return true;

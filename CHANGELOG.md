@@ -4,7 +4,11 @@ All Notable changes to `froala/nova-froala-field` will be documented in this fil
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## 3.0.0 -2019-07-03
+## 3.0.1 - 2019-07-04
+
+- Fixed plugins usage detection
+
+## 3.0.0 - 2019-07-03
 
 - Upgraded Froala to **3.0.1** version!
 - Fixed an error when no toolbarButtons provided
