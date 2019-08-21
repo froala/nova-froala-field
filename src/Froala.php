@@ -169,11 +169,9 @@ class Froala extends Trix
         }
     }
 
-    public function showOnIndex()
+    public function showOnIndex($callback = true)
     {
-        $this->showOnIndex = true;
-
-        return $this;
+        return parent::showOnIndex(true);
     }
 
     /**
