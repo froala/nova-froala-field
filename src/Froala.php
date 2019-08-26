@@ -169,13 +169,6 @@ class Froala extends Trix
         }
     }
 
-    public function showOnIndex()
-    {
-        $this->showOnIndex = true;
-
-        return $this;
-    }
-
     /**
      * Specify the callback that should be used to get attached images list.
      *
