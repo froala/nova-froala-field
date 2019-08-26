@@ -4,6 +4,11 @@ All Notable changes to `froala/nova-froala-field` will be documented in this fil
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## 3.1.0 - 2019-07-26
+
+- Nova 2.1 compatibility
+- Froala updated to 3.0.5 version
+
 ## 3.0.1 - 2019-07-04
 
 - Fixed plugins usage detection
