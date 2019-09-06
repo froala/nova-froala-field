@@ -25,15 +25,14 @@
         }
     ],
     "require": {
-        "php": ">=7.1.0",
-        "laravel/framework": "^5.8",
+        "php": ">=7.1.3",
         "laravel/nova": "*",
         "league/flysystem": "^1.0.8",
         "spatie/image-optimizer": "^1.1"
     },
     "require-dev": {
         "mockery/mockery": "^1.1",
-        "orchestra/testbench": "^3.8",
+        "orchestra/testbench": "^3.8|^4.0",
         "phpunit/phpunit": "^7.0|^8.0"
     },
     "autoload": {
