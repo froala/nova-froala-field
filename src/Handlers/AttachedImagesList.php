@@ -36,7 +36,7 @@ class AttachedImagesList
         $Storage = Storage::disk($this->field->disk);
 
         foreach ($Storage->allFiles() as $file) {
-            if (! app()->runningUnitTests() and ! @getimagesize($Storage->url($file))) {
+            if (! app()->runningUnitTests() and ! @getimagesize($Storage->path($file))) {
                 continue;
             }
 
