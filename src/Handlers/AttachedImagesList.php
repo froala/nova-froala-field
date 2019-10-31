@@ -34,9 +34,16 @@ class AttachedImagesList
         $images = [];
 
         $Storage = Storage::disk($this->field->disk);
+        $disks = config('filesystems.disks');
 
         foreach ($Storage->allFiles() as $file) {
-            if (! app()->runningUnitTests() and ! @getimagesize($Storage->url($file))) {
+            if ($disks[$this->field->disk]['driver'] == 'local') {
+                $path = $Storage->path($file);
+            } else {
+                $path = $Storage->url($file);
+            }
+
+            if (! app()->runningUnitTests() and ! @getimagesize($path)) {
                 continue;
             }
 
