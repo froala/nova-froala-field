@@ -103,7 +103,7 @@ class Froala extends Trix
     /**
      * Specify that file uploads should not be allowed.
      */
-    public function withFiles($disk = null)
+    public function withFiles($disk = null, $path = '/')
     {
         $this->withFiles = true;
 
