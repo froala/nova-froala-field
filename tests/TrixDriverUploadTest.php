@@ -2,13 +2,13 @@
 
 namespace Froala\NovaFroalaField\Tests;
 
-use Laravel\Nova\Nova;
-use Laravel\Nova\Trix\Attachment;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Storage;
-use Laravel\Nova\Trix\PendingAttachment;
 use Froala\NovaFroalaField\Tests\Fixtures\Article;
 use Froala\NovaFroalaField\Tests\Fixtures\TestServiceProvider;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
+use Laravel\Nova\Nova;
+use Laravel\Nova\Trix\Attachment;
+use Laravel\Nova\Trix\PendingAttachment;
 
 class TrixDriverUploadTest extends TestCase
 {

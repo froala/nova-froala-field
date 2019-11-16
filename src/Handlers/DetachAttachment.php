@@ -2,8 +2,8 @@
 
 namespace Froala\NovaFroalaField\Handlers;
 
-use Illuminate\Http\Request;
 use Froala\NovaFroalaField\Models\Attachment;
+use Illuminate\Http\Request;
 
 class DetachAttachment
 {

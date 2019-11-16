@@ -2,13 +2,13 @@
 
 namespace Froala\NovaFroalaField;
 
-use Laravel\Nova\Nova;
-use Illuminate\Support\Str;
-use Laravel\Nova\Events\ServingNova;
+use Froala\NovaFroalaField\Http\Controllers\FroalaToTrixAttachmentAdapterController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
+use Laravel\Nova\Events\ServingNova;
 use Laravel\Nova\Http\Controllers\TrixAttachmentController;
-use Froala\NovaFroalaField\Http\Controllers\FroalaToTrixAttachmentAdapterController;
+use Laravel\Nova\Nova;
 
 class FroalaFieldServiceProvider extends ServiceProvider
 {

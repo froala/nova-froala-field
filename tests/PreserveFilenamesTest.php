@@ -2,9 +2,9 @@
 
 namespace Froala\NovaFroalaField\Tests;
 
+use Froala\NovaFroalaField\Models\PendingAttachment;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
-use Froala\NovaFroalaField\Models\PendingAttachment;
 
 class PreserveFilenamesTest extends TestCase
 {
