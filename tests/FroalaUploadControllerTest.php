@@ -2,11 +2,11 @@
 
 namespace Froala\NovaFroalaField\Tests;
 
-use Laravel\Nova\Nova;
-use Illuminate\Support\Facades\Storage;
 use Froala\NovaFroalaField\Models\Attachment;
-use Froala\NovaFroalaField\Tests\Fixtures\Article;
 use Froala\NovaFroalaField\Models\PendingAttachment;
+use Froala\NovaFroalaField\Tests\Fixtures\Article;
+use Illuminate\Support\Facades\Storage;
+use Laravel\Nova\Nova;
 
 class FroalaUploadControllerTest extends TestCase
 {

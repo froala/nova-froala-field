@@ -2,10 +2,10 @@
 
 namespace Froala\NovaFroalaField\Tests;
 
-use Illuminate\Support\Str;
+use Illuminate\Foundation\Testing\TestResponse;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Foundation\Testing\TestResponse;
+use Illuminate\Support\Str;
 
 trait UploadsHelper
 {
