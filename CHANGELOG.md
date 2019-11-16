@@ -4,6 +4,10 @@ All Notable changes to `froala/nova-froala-field` will be documented in this fil
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## 3.2.1 - 2019-11-16
+
+- Updated `Froala::withFiles` method signature according to latest Nova update
+
 ## 3.2.0 - 2019-09-07
 
 - Laravel 6.0 support
