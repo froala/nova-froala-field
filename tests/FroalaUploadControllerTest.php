@@ -122,7 +122,7 @@ class FroalaUploadControllerTest extends TestCase
         $articleResponse = $this->storeArticle();
 
         $this->json('DELETE', 'nova-api/articles', [
-            'resources' => [(int)$articleResponse->json('id')],
+            'resources' => [(int) $articleResponse->json('id')],
         ]);
 
         foreach ($fileNames as $fileName) {

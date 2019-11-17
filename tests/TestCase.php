@@ -2,16 +2,16 @@
 
 namespace Froala\NovaFroalaField\Tests;
 
-use Laravel\Nova\Nova;
+use Froala\NovaFroalaField\FroalaFieldServiceProvider;
+use Froala\NovaFroalaField\Tests\Fixtures\TestResource;
+use Froala\NovaFroalaField\Tests\Fixtures\User;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Route;
+use Laravel\Nova\Nova;
+use Laravel\Nova\NovaApplicationServiceProvider;
 use Laravel\Nova\NovaCoreServiceProvider;
 use Laravel\Nova\NovaServiceProvider;
-use Illuminate\Database\Schema\Blueprint;
-use Froala\NovaFroalaField\Tests\Fixtures\User;
-use Laravel\Nova\NovaApplicationServiceProvider;
-use Froala\NovaFroalaField\FroalaFieldServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
-use Froala\NovaFroalaField\Tests\Fixtures\TestResource;
 
 abstract class TestCase extends OrchestraTestCase
 {
