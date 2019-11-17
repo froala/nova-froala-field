@@ -107,7 +107,7 @@ class Froala extends Trix
     {
         $this->withFiles = true;
 
-        if (nova_version_higher_then('2.7.0')) {
+        if (nova_version_at_least('2.7.0')) {
             $this->disk($disk)->path($path);
         } else {
             $this->disk($disk);

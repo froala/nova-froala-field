@@ -4,7 +4,7 @@ namespace Froala\NovaFroalaField\Tests;
 
 use Froala\NovaFroalaField\Models\Attachment;
 use Froala\NovaFroalaField\Models\PendingAttachment;
-use function Froala\NovaFroalaField\nova_version_higher_then;
+use function Froala\NovaFroalaField\nova_version_at_least;
 use Froala\NovaFroalaField\Tests\Fixtures\Article;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Nova;
@@ -40,7 +40,7 @@ class FroalaUploadControllerTest extends TestCase
 
         $response = $this->storeArticle();
 
-        if (nova_version_higher_then('1.3.1')) {
+        if (nova_version_at_least('1.3.1')) {
             $response->assertJson([
                 'resource' => [
                     'title' => 'Some title',
