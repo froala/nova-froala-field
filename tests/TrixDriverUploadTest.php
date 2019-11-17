@@ -2,6 +2,7 @@
 
 namespace Froala\NovaFroalaField\Tests;
 
+use function Froala\NovaFroalaField\nova_version_higher_then;
 use Froala\NovaFroalaField\Tests\Fixtures\Article;
 use Froala\NovaFroalaField\Tests\Fixtures\TestServiceProvider;
 use Illuminate\Support\Facades\Schema;
@@ -60,17 +61,17 @@ class TrixDriverUploadTest extends TestCase
 
         $response = $this->storeArticle();
 
-        if (version_compare(Nova::version(), '1.3.1') === -1) {
-            $response->assertJson([
-                'title' => 'Some title',
-                'content' => 'Some content',
-            ]);
-        } else {
+        if (nova_version_higher_then('1.3.1')) {
             $response->assertJson([
                 'resource' => [
                     'title' => 'Some title',
                     'content' => 'Some content',
                 ],
+            ]);
+        } else {
+            $response->assertJson([
+                'title' => 'Some title',
+                'content' => 'Some content',
             ]);
         }
 

@@ -107,7 +107,11 @@ class Froala extends Trix
     {
         $this->withFiles = true;
 
-        $this->disk($disk)->path($path);
+        if (nova_version_higher_then('2.7.0')) {
+            $this->disk($disk)->path($path);
+        } else {
+            $this->disk($disk);
+        }
 
         if (config('nova.froala-field.attachments_driver', self::DRIVER_NAME) !== self::DRIVER_NAME) {
             $this->images(new AttachedImagesList($this));
