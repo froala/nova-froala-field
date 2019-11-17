@@ -7,7 +7,6 @@ use Froala\NovaFroalaField\Models\PendingAttachment;
 use function Froala\NovaFroalaField\nova_version_at_least;
 use Froala\NovaFroalaField\Tests\Fixtures\Article;
 use Illuminate\Support\Facades\Storage;
-use Laravel\Nova\Nova;
 
 class FroalaUploadControllerTest extends TestCase
 {
