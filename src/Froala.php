@@ -2,16 +2,16 @@
 
 namespace Froala\NovaFroalaField;
 
+use Froala\NovaFroalaField\Handlers\AttachedImagesList;
+use Froala\NovaFroalaField\Handlers\DeleteAttachments;
+use Froala\NovaFroalaField\Handlers\DetachAttachment;
+use Froala\NovaFroalaField\Handlers\DiscardPendingAttachments;
+use Froala\NovaFroalaField\Handlers\StorePendingAttachment;
+use Froala\NovaFroalaField\Models\PendingAttachment as FroalaPendingAttachment;
 use Illuminate\Support\Str;
 use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Froala\NovaFroalaField\Handlers\DetachAttachment;
-use Froala\NovaFroalaField\Handlers\DeleteAttachments;
-use Froala\NovaFroalaField\Handlers\AttachedImagesList;
-use Froala\NovaFroalaField\Handlers\StorePendingAttachment;
-use Froala\NovaFroalaField\Handlers\DiscardPendingAttachments;
 use Laravel\Nova\Trix\PendingAttachment as TrixPendingAttachment;
-use Froala\NovaFroalaField\Models\PendingAttachment as FroalaPendingAttachment;
 
 class Froala extends Trix
 {

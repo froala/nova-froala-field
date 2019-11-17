@@ -2,8 +2,8 @@
 
 namespace Froala\NovaFroalaField\Handlers;
 
-use Illuminate\Http\Request;
 use Froala\NovaFroalaField\Froala;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class AttachedImagesList

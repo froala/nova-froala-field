@@ -2,12 +2,12 @@
 
 namespace Froala\NovaFroalaField\Handlers;
 
+use Froala\NovaFroalaField\Froala;
+use Froala\NovaFroalaField\Models\PendingAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Froala\NovaFroalaField\Froala;
 use Illuminate\Support\Facades\Storage;
 use Spatie\ImageOptimizer\OptimizerChainFactory;
-use Froala\NovaFroalaField\Models\PendingAttachment;
 
 class StorePendingAttachment
 {
