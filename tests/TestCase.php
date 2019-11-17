@@ -4,6 +4,7 @@ namespace Froala\NovaFroalaField\Tests;
 
 use Laravel\Nova\Nova;
 use Illuminate\Support\Facades\Route;
+use Laravel\Nova\NovaCoreServiceProvider;
 use Laravel\Nova\NovaServiceProvider;
 use Illuminate\Database\Schema\Blueprint;
 use Froala\NovaFroalaField\Tests\Fixtures\User;
@@ -42,6 +43,7 @@ abstract class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app)
     {
         return [
+            NovaCoreServiceProvider::class,
             NovaServiceProvider::class,
             NovaApplicationServiceProvider::class,
             FroalaFieldServiceProvider::class,

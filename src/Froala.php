@@ -107,7 +107,7 @@ class Froala extends Trix
     {
         $this->withFiles = true;
 
-        $this->disk($disk);
+        $this->disk($disk)->path($path);
 
         if (config('nova.froala-field.attachments_driver', self::DRIVER_NAME) !== self::DRIVER_NAME) {
             $this->images(new AttachedImagesList($this));
@@ -182,5 +182,15 @@ class Froala extends Trix
         $this->imagesCallback = $imagesCallback;
 
         return $this;
+    }
+
+    /**
+     * Get the full path that the field is stored at on disk.
+     *
+     * @return string|null
+     */
+    public function getStoragePath()
+    {
+        return '/';
     }
 }
