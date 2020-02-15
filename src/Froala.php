@@ -189,6 +189,16 @@ class Froala extends Trix
     }
 
     /**
+     * Get the path that the field is stored at on disk.
+     *
+     * @return string|null
+     */
+    public function getStorageDir()
+    {
+        return $this->storagePath ?? '/';
+    }
+
+    /**
      * Get the full path that the field is stored at on disk.
      *
      * @return string|null
