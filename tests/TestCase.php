@@ -17,6 +17,8 @@ abstract class TestCase extends OrchestraTestCase
 {
     const DISK = 'public';
 
+    const PATH = 'subpath';
+
     public static $user;
 
     public function setUp(): void

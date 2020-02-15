@@ -116,7 +116,7 @@ class Froala extends Trix
         if (config('nova.froala-field.attachments_driver', self::DRIVER_NAME) !== self::DRIVER_NAME) {
             $this->images(new AttachedImagesList($this));
 
-            return parent::withFiles($disk);
+            return parent::withFiles($disk, $path);
         }
 
         $this->attach(new StorePendingAttachment($this))

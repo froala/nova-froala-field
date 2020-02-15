@@ -7,6 +7,8 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
+use function Froala\NovaFroalaField\nova_version_at_least;
+
 trait UploadsHelper
 {
     protected $file;
@@ -48,5 +50,12 @@ trait UploadsHelper
             'content' => 'Some content',
             'contentDraftId' => $this->draftId,
         ]);
+    }
+
+    protected function getAttachmentLocation($preserveFilename = false): string
+    {
+        $filename = $preserveFilename ? $this->file->getClientOriginalName() : $this->file->hashName();
+
+        return nova_version_at_least('2.7.0') ? rtrim(TestCase::PATH, '/') . '/' . $filename : $filename;
     }
 }
