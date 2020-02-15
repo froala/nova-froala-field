@@ -2,12 +2,11 @@
 
 namespace Froala\NovaFroalaField\Tests;
 
+use function Froala\NovaFroalaField\nova_version_at_least;
 use Illuminate\Foundation\Testing\TestResponse;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-
-use function Froala\NovaFroalaField\nova_version_at_least;
 
 trait UploadsHelper
 {
@@ -56,6 +55,6 @@ trait UploadsHelper
     {
         $filename = $preserveFilename ? $this->file->getClientOriginalName() : $this->file->hashName();
 
-        return nova_version_at_least('2.7.0') ? rtrim(TestCase::PATH, '/') . '/' . $filename : $filename;
+        return nova_version_at_least('2.7.0') ? rtrim(TestCase::PATH, '/').'/'.$filename : $filename;
     }
 }

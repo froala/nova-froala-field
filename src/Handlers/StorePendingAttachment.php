@@ -57,7 +57,7 @@ class StorePendingAttachment
 
     protected function abortIfFileNameExists(Request $request): void
     {
-        $path = rtrim($this->field->getStorageDir(), '/') . '/' . $request->attachment->getClientOriginalName();
+        $path = rtrim($this->field->getStorageDir(), '/').'/'.$request->attachment->getClientOriginalName();
 
         if (config('nova.froala-field.preserve_file_names')
             && Storage::disk($this->field->disk)
