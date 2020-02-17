@@ -4,6 +4,10 @@ All Notable changes to `froala/nova-froala-field` will be documented in this fil
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## 3.2.3 - 2020-02-17
+
+- Fixed files storing consider to new `withFiles($disk, $path)` method signature and `StorableContract`
+
 ## 3.2.2 - 2019-12-12
 
 - Removed unnecessary JS bundle size
