@@ -24,16 +24,16 @@ class PreserveFilenamesTest extends TestCase
     {
         $response = $this->uploadPendingFile();
 
-        $response->assertJson(['link' => Storage::disk(static::DISK)->url($this->file->getClientOriginalName())]);
+        $response->assertJson(['link' => Storage::disk(static::DISK)->url($this->getAttachmentLocation(true))]);
 
         $this->assertDatabaseHas((new PendingAttachment)->getTable(), [
             'draft_id' => $this->draftId,
             'disk' => static::DISK,
-            'attachment' => $this->file->getClientOriginalName(),
+            'attachment' => $this->getAttachmentLocation(true),
         ]);
 
         // Assert the file was stored...
-        Storage::disk(static::DISK)->assertExists($this->file->getClientOriginalName());
+        Storage::disk(static::DISK)->assertExists($this->getAttachmentLocation(true));
     }
 
     /** @test */

@@ -17,16 +17,16 @@ class FroalaUploadControllerTest extends TestCase
     {
         $response = $this->uploadPendingFile();
 
-        $response->assertJson(['link' => Storage::disk(static::DISK)->url($this->file->hashName())]);
+        $response->assertJson(['link' => Storage::disk(static::DISK)->url($this->getAttachmentLocation())]);
 
         $this->assertDatabaseHas((new PendingAttachment)->getTable(), [
             'draft_id' => $this->draftId,
             'disk' => static::DISK,
-            'attachment' => $this->file->hashName(),
+            'attachment' => $this->getAttachmentLocation(),
         ]);
 
         // Assert the file was stored...
-        Storage::disk(static::DISK)->assertExists($this->file->hashName());
+        Storage::disk(static::DISK)->assertExists($this->getAttachmentLocation());
 
         // Assert a file does not exist...
         Storage::disk(static::DISK)->assertMissing('missing.jpg');
@@ -55,8 +55,8 @@ class FroalaUploadControllerTest extends TestCase
 
         $this->assertDatabaseHas((new Attachment)->getTable(), [
             'disk' => static::DISK,
-            'attachment' => $this->file->hashName(),
-            'url' => Storage::disk(static::DISK)->url($this->file->hashName()),
+            'attachment' => $this->getAttachmentLocation(),
+            'url' => Storage::disk(static::DISK)->url($this->getAttachmentLocation()),
             'attachable_id' => $response->json('id'),
             'attachable_type' => Article::class,
         ]);
@@ -69,13 +69,13 @@ class FroalaUploadControllerTest extends TestCase
 
         $this->storeArticle();
 
-        Storage::disk(static::DISK)->assertExists($this->file->hashName());
+        Storage::disk(static::DISK)->assertExists($this->getAttachmentLocation());
 
         $this->json('DELETE', 'nova-vendor/froala-field/articles/attachments/content', [
             'src' => $src,
         ]);
 
-        Storage::disk(static::DISK)->assertMissing($this->file->hashName());
+        Storage::disk(static::DISK)->assertMissing($this->getAttachmentLocation());
     }
 
     /** @test */
@@ -86,7 +86,7 @@ class FroalaUploadControllerTest extends TestCase
         for ($i = 0; $i <= 3; $i++) {
             $this->uploadPendingFile();
 
-            $fileNames[] = $this->file->hashName();
+            $fileNames[] = $this->getAttachmentLocation();
 
             $this->regenerateUpload();
         }
@@ -110,7 +110,7 @@ class FroalaUploadControllerTest extends TestCase
         for ($i = 0; $i <= 5; $i++) {
             $this->uploadPendingFile();
 
-            $fileNames[] = $this->file->hashName();
+            $fileNames[] = $this->getAttachmentLocation();
 
             $this->regenerateUpload();
         }

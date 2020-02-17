@@ -21,7 +21,7 @@ class TestResource extends Resource
     {
         return [
             Text::make('Title'),
-            Froala::make('Content')->withFiles(TestCase::DISK),
+            Froala::make('Content')->withFiles(TestCase::DISK, TestCase::PATH),
         ];
     }
 }

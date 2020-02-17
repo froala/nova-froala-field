@@ -16,7 +16,7 @@ class FroalaImageManagerControllerTest extends TestCase
         for ($i = 0; $i <= 10; $i++) {
             $this->uploadPendingFile();
 
-            $url = Storage::disk(TestCase::DISK)->url($this->file->hashName());
+            $url = Storage::disk(TestCase::DISK)->url($this->getAttachmentLocation());
 
             $images[] = [
                 'url' => $url,
@@ -47,6 +47,6 @@ class FroalaImageManagerControllerTest extends TestCase
             'field' => 'content',
         ]);
 
-        Storage::disk(static::DISK)->assertMissing($this->file->hashName());
+        Storage::disk(static::DISK)->assertMissing($this->getAttachmentLocation());
     }
 }
