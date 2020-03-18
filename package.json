@@ -28,6 +28,9 @@
     "dependencies": {
         "@babel/runtime-corejs2": "^7.4.5",
         "babel-plugin-syntax-dynamic-import": "^6.18.0",
+        "fabric": "1.6.7",
+        "tui-code-snippet": "1.4.0",
+        "tui-image-editor": "3.2.2",
         "vue": "^2.6.0",
         "vue-froala-wysiwyg": "^3.0"
     }

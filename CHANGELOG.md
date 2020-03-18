@@ -4,6 +4,11 @@ All Notable changes to `froala/nova-froala-field` will be documented in this fil
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## 3.3.0 - 2020-03-18
+
+- Updated Froala version to 3.1.1
+- Fixed Tui Image Editor plugin import
+
 ## 3.2.3 - 2020-02-17
 
 - Fixed files storing consider to new `withFiles($disk, $path)` method signature and `StorableContract`
