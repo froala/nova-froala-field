@@ -5,6 +5,7 @@ namespace Froala\NovaFroalaField\Handlers;
 use Froala\NovaFroalaField\Froala;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class AttachedImagesList
 {
@@ -33,14 +34,14 @@ class AttachedImagesList
     {
         $images = [];
 
-        $Storage = Storage::disk($this->field->disk);
+        $disk = Storage::disk($this->field->disk);
 
-        foreach ($Storage->allFiles() as $file) {
-            if (! app()->runningUnitTests() and ! @getimagesize($Storage->url($file))) {
+        foreach ($disk->allFiles() as $file) {
+            if (! app()->runningUnitTests() && Str::before((string) $disk->getMimetype($file), '/') !== 'image') {
                 continue;
             }
 
-            $url = $Storage->url($file);
+            $url = $disk->url($file);
             $images[] = [
                 'url' => $url,
                 'thumb' => $url,
