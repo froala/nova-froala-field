@@ -163,7 +163,7 @@ class Froala extends Trix
                 ? FroalaPendingAttachment::class
                 : TrixPendingAttachment::class;
 
-            return function () use ($request, $requestAttribute, $model, $attribute, $pendingAttachmentClass) {
+            return function () use ($request, $model, $pendingAttachmentClass) {
                 $pendingAttachmentClass::persistDraft(
                     $request->{$this->attribute.'DraftId'},
                     $this,
