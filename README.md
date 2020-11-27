@@ -362,7 +362,7 @@ To setup your license key, uncomment `key` option in the config file and set `FR
 
 ## 3rd Party Integrations
 
-To enable a button that uses some a 3rd party service and needs additional script inluding, like: *Embed.ly*, *TUI Advanced Image Editor* or *SCAYT Web SpellChecker*, you should publish 3rd party scripts:
+To enable a button that uses some a 3rd party service and needs additional script including, like: *Embed.ly*, *TUI Advanced Image Editor* or *SCAYT Web SpellChecker*, you should publish 3rd party scripts:
 
 ```bash
 php artisan vendor:publish --tag=nova-froala-field-plugins --provider=Froala\\NovaFroalaField\\FroalaFieldServiceProvider
