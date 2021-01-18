@@ -5,9 +5,7 @@ class FroalaAttachmentsAdapter {
     }
 
     get cleanUpUrl() {
-        return `/nova-vendor/froala-field/${this.resource}/attachments/${this.field.attribute}/${
-            this.field.draftId
-        }`;
+        return `/nova-vendor/froala-field/${this.resource}/attachments/${this.field.attribute}/${this.field.draftId}`;
     }
 
     get imageUploadUrl() {
@@ -18,7 +16,7 @@ class FroalaAttachmentsAdapter {
         return this.imageUploadUrl;
     }
 
-    get vieoUploadUrl() {
+    get videoUploadUrl() {
         return this.imageUploadUrl;
     }
 

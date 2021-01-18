@@ -30,7 +30,7 @@ class MediaConfigurator {
             this.imageManagerLoadConfig,
             this.imageManagerDeleteConfig,
             this.videoUploadConfig,
-            this.fileUplaodConfig
+            this.fileUploadConfig
         );
     }
 
@@ -130,7 +130,7 @@ class MediaConfigurator {
 
     get videoUploadConfig() {
         return {
-            videoUploadURL: this.adapter.vieoUploadUrl,
+            videoUploadURL: this.adapter.videoUploadUrl,
 
             videoUploadParam: 'attachment',
 
@@ -141,7 +141,7 @@ class MediaConfigurator {
         };
     }
 
-    get fileUplaodConfig() {
+    get fileUploadConfig() {
         return {
             // Set the file upload parameter.
             fileUploadParam: 'attachment',

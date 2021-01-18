@@ -1,9 +1,9 @@
 <template>
     <div>
         <a
-            @click="toggle"
             class="cursor-pointer dim inline-block text-primary font-bold"
             aria-role="button"
+            @click="toggle"
         >
             {{ showHideLabel }}
         </a>
@@ -15,7 +15,14 @@
                     </div>
                     <div class="bg-30 px-6 py-3 flex">
                         <div class="ml-auto">
-                            <button type="button" data-testid="cancel-button" @click.prevent="toggle" class="btn text-80 font-normal h-9 px-3 mr-3 btn-link">{{__('Close')}}</button>
+                            <button
+                                class="btn text-80 font-normal h-9 px-3 mr-3 btn-link"
+                                type="button"
+                                data-testid="cancel-button"
+                                @click.prevent="toggle"
+                            >
+                                {{ __('Close') }}
+                            </button>
                         </div>
                     </div>
                 </div>

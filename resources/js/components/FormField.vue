@@ -33,9 +33,9 @@ export default {
             });
         }
 
-        new PluginsLoader(this.options, this.$toasted).registerPlugins().then((data) => {
+        new PluginsLoader(this.options, this.$toasted).registerPlugins().then(data => {
             this.loading = false;
-        })
+        });
     },
 
     data() {

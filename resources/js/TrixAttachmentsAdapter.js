@@ -5,9 +5,7 @@ class TrixAttachmentsAdapter {
     }
 
     get cleanUpUrl() {
-        return `/nova-api/${this.resource}/trix-attachment/${this.field.attribute}/${
-            this.field.draftId
-        }`;
+        return `/nova-api/${this.resource}/trix-attachment/${this.field.attribute}/${this.field.draftId}`;
     }
 
     get imageUploadUrl() {

@@ -18,7 +18,7 @@ class PluginsLoader {
                     'froala-editor/js/third_party/embedly.min'
                 );
             } catch (e) {
-                this.errorPluginLoadNotification('Embed.ly')
+                this.errorPluginLoadNotification('Embed.ly');
             }
         }
 
@@ -29,7 +29,7 @@ class PluginsLoader {
                     'froala-editor/js/third_party/spell_checker.min'
                 );
             } catch (e) {
-                this.errorPluginLoadNotification('SCAYT Web SpellChecker')
+                this.errorPluginLoadNotification('SCAYT Web SpellChecker');
             }
         }
 
@@ -40,7 +40,7 @@ class PluginsLoader {
                     'froala-editor/js/third_party/image_tui.min.js'
                 );
             } catch (e) {
-                this.errorPluginLoadNotification('TUI Advanced Image Editor')
+                this.errorPluginLoadNotification('TUI Advanced Image Editor');
             }
         }
 
@@ -52,7 +52,7 @@ class PluginsLoader {
             'toolbarButtons',
             'toolbarButtonsMD',
             'toolbarButtonsSM',
-            'toolbarButtonsXS'
+            'toolbarButtonsXS',
         ];
 
         let buttons = [];
@@ -66,8 +66,7 @@ class PluginsLoader {
 
     errorPluginLoadNotification(name) {
         this.notificator.show(
-            `Something wrong with ${name} plugin load. `
-            + 'Perhaps you forgot to publish it.',
+            `Something wrong with ${name} plugin load. ` + 'Perhaps you forgot to publish it.',
             { type: 'error' }
         );
     }

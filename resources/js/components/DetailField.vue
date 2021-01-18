@@ -36,17 +36,17 @@ export default {
 
     methods: {
         toggle() {
-            this.expanded = !this.expanded
+            this.expanded = !this.expanded;
         },
     },
 
     computed: {
         hasContent() {
-            return this.content !== '' && this.content !== null
+            return this.content !== '' && this.content !== null;
         },
 
         showHideLabel() {
-            return !this.expanded ? this.__('Show Content') : this.__('Hide Content')
+            return !this.expanded ? this.__('Show Content') : this.__('Hide Content');
         },
     },
 };
