@@ -4,6 +4,10 @@ All Notable changes to `froala/nova-froala-field` will be documented in this fil
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## 3.4.0 - 2021-01-18
+
+- Froala updated to 3.2.5-1 version
+
 ## 3.3.1 - 2020-11-17
 
 - Improve image detection in images list
