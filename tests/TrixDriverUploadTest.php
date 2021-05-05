@@ -2,8 +2,8 @@
 
 namespace Froala\NovaFroalaField\Tests;
 
-use Froala\NovaFroalaField\Tests\Fixtures\Article;
 use function Froala\NovaFroalaField\nova_version_at_least;
+use Froala\NovaFroalaField\Tests\Fixtures\Article;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Trix\Attachment;

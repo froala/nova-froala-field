@@ -34,7 +34,7 @@ class DeleteAttachments
      */
     public function __invoke(Request $request, $model)
     {
-        Attachment::where('attachable_type', get_class($model))
+        Attachment::where('attachable_type', $model->getMorphClass())
                 ->where('attachable_id', $model->getKey())
                 ->get()
                 ->each

@@ -4,6 +4,7 @@ namespace Froala\NovaFroalaField\Tests;
 
 use Froala\NovaFroalaField\FroalaFieldServiceProvider;
 use Froala\NovaFroalaField\Tests\Fixtures\TestResource;
+use Froala\NovaFroalaField\Tests\Fixtures\TestServiceProvider;
 use Froala\NovaFroalaField\Tests\Fixtures\User;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +50,7 @@ abstract class TestCase extends OrchestraTestCase
             NovaServiceProvider::class,
             NovaApplicationServiceProvider::class,
             FroalaFieldServiceProvider::class,
+            TestServiceProvider::class,
         ];
     }
 
