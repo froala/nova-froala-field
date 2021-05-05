@@ -4,7 +4,6 @@ namespace Froala\NovaFroalaField\Tests;
 
 use function Froala\NovaFroalaField\nova_version_at_least;
 use Froala\NovaFroalaField\Tests\Fixtures\Article;
-use Froala\NovaFroalaField\Tests\Fixtures\TestServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Trix\Attachment;
@@ -26,11 +25,9 @@ class TrixDriverUploadTest extends TestCase
 
     protected function getPackageProviders($app)
     {
-        $providers = parent::getPackageProviders($app);
+        $app['config']->set('nova.froala-field.attachments_driver', 'trix');
 
-        array_unshift($providers, TestServiceProvider::class);
-
-        return $providers;
+        return parent::getPackageProviders($app);
     }
 
     /** @test */

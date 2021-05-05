@@ -5,7 +5,6 @@ namespace Froala\NovaFroalaField\Tests;
 use Froala\NovaFroalaField\Models\Attachment;
 use Froala\NovaFroalaField\Models\PendingAttachment;
 use function Froala\NovaFroalaField\nova_version_at_least;
-use Froala\NovaFroalaField\Tests\Fixtures\Article;
 use Illuminate\Support\Facades\Storage;
 
 class FroalaUploadControllerTest extends TestCase
@@ -58,7 +57,7 @@ class FroalaUploadControllerTest extends TestCase
             'attachment' => $this->getAttachmentLocation(),
             'url' => Storage::disk(static::DISK)->url($this->getAttachmentLocation()),
             'attachable_id' => $response->json('id'),
-            'attachable_type' => Article::class,
+            'attachable_type' => 'article',
         ]);
     }
 

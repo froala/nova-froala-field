@@ -32,7 +32,7 @@ trait UploadsHelper
 
     protected function uploadPendingFile(): TestResponse
     {
-        $url = config('nova.froala-field.attachments_driver') === 'trix'
+        $url = $this->app['config']->get('nova.froala-field.attachments_driver') === 'trix'
             ? '/nova-api/articles/trix-attachment/content'
             : 'nova-vendor/froala-field/articles/attachments/content';
 
