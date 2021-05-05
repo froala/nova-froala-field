@@ -2,7 +2,6 @@
 
 namespace Froala\NovaFroalaField\Tests;
 
-use Froala\NovaFroalaField\Models\PendingAttachment;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 
@@ -26,7 +25,7 @@ class PreserveFilenamesTest extends TestCase
 
         $response->assertJson(['link' => Storage::disk(static::DISK)->url($this->getAttachmentLocation(true))]);
 
-        $this->assertDatabaseHas((new PendingAttachment)->getTable(), [
+        $this->assertDatabaseHas($this->getPendingAttachmentsTable(), [
             'draft_id' => $this->draftId,
             'disk' => static::DISK,
             'attachment' => $this->getAttachmentLocation(true),

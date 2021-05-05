@@ -2,11 +2,29 @@
 
 namespace Froala\NovaFroalaField\Handlers;
 
-use Froala\NovaFroalaField\Models\Attachment;
 use Illuminate\Http\Request;
 
 class DetachAttachment
 {
+    /**
+     * The attachment model class name.
+     *
+     * @var string
+     * @psalm-var class-string<\Froala\NovaFroalaField\Models\Attachment>
+     */
+    protected $attachmentModelClassName;
+
+    /**
+     * Create a new class instance.
+     *
+     * @param  string $attachmentModelClassName
+     * @return void
+     */
+    public function __construct($attachmentModelClassName)
+    {
+        $this->attachmentModelClassName = $attachmentModelClassName;
+    }
+
     /**
      * Delete an attachment from the field.
      *
@@ -15,7 +33,7 @@ class DetachAttachment
      */
     public function __invoke(Request $request)
     {
-        Attachment::where('url', $request->src)
+        $this->attachmentModelClassName::where('url', $request->src)
                         ->get()
                         ->each
                         ->purge();
