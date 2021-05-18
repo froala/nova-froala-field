@@ -10,7 +10,6 @@ class DetachAttachment
      * The attachment model class name.
      *
      * @var string
-     * @psalm-var class-string<\Froala\NovaFroalaField\Models\Attachment>
      */
     protected $attachmentModelClassName;
 

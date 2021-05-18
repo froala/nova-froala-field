@@ -21,7 +21,6 @@ class StorePendingAttachment
      * The pending attachment model class name.
      *
      * @var string
-     * @psalm-var class-string<\Froala\NovaFroalaField\Models\PendingAttachment>
      */
     protected $pendingAttachmentModelClassName;
 
