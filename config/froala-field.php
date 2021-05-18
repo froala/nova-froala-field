@@ -49,7 +49,7 @@ return [
     | the default classes with your own custom ones here.
     |
     */
-    'attachment_model'         => Froala\NovaFroalaField\Models\Attachment::class,
+    'attachment_model' => Froala\NovaFroalaField\Models\Attachment::class,
     'pending_attachment_model' => Froala\NovaFroalaField\Models\PendingAttachment::class,
 
     /*
