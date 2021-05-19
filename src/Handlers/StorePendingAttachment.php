@@ -3,7 +3,6 @@
 namespace Froala\NovaFroalaField\Handlers;
 
 use Froala\NovaFroalaField\Froala;
-use Froala\NovaFroalaField\Models\PendingAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
@@ -19,14 +18,23 @@ class StorePendingAttachment
     public $field;
 
     /**
+     * The pending attachment model class name.
+     *
+     * @var string
+     */
+    protected $pendingAttachmentModelClassName;
+
+    /**
      * Create a new invokable instance.
      *
      * @param  \Froala\NovaFroalaField\Froala  $field
+     * @param  string $pendingAttachmentModelClassName
      * @return void
      */
-    public function __construct(Froala $field)
+    public function __construct(Froala $field, $pendingAttachmentModelClassName)
     {
         $this->field = $field;
+        $this->pendingAttachmentModelClassName = $pendingAttachmentModelClassName;
     }
 
     /**
@@ -39,7 +47,7 @@ class StorePendingAttachment
     {
         $this->abortIfFileNameExists($request);
 
-        $attachment = PendingAttachment::create([
+        $attachment = $this->pendingAttachmentModelClassName::create([
             'draft_id' => $request->draftId,
             'attachment' => config('nova.froala-field.preserve_file_names')
                 ? $request->attachment->storeAs(

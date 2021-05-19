@@ -45,7 +45,9 @@ class PendingAttachment extends Model
      */
     public function persist(Froala $field, $model)
     {
-        Attachment::create([
+        $attachmentModelClassName = config('nova.froala-field.attachment_model');
+
+        $attachmentModelClassName::create([
             'attachable_type' => get_class($model),
             'attachable_id' => $model->getKey(),
             'attachment' => $this->attachment,

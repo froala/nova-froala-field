@@ -42,6 +42,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Attachment Models
+    |--------------------------------------------------------------------------
+    |
+    | If you want to extend the attachment models, you can replace
+    | the default classes with your own custom ones here.
+    |
+    */
+    'attachment_model' => Froala\NovaFroalaField\Models\Attachment::class,
+    'pending_attachment_model' => Froala\NovaFroalaField\Models\PendingAttachment::class,
+
+    /*
+    |--------------------------------------------------------------------------
     | Editor Attachments Driver
     |--------------------------------------------------------------------------
     |

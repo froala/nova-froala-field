@@ -2,8 +2,6 @@
 
 namespace Froala\NovaFroalaField\Tests;
 
-use Froala\NovaFroalaField\Models\Attachment;
-use Froala\NovaFroalaField\Models\PendingAttachment;
 use function Froala\NovaFroalaField\nova_version_at_least;
 use Froala\NovaFroalaField\Tests\Fixtures\Article;
 use Illuminate\Support\Facades\Storage;
@@ -19,7 +17,7 @@ class FroalaUploadControllerTest extends TestCase
 
         $response->assertJson(['link' => Storage::disk(static::DISK)->url($this->getAttachmentLocation())]);
 
-        $this->assertDatabaseHas((new PendingAttachment)->getTable(), [
+        $this->assertDatabaseHas($this->getPendingAttachmentsTable(), [
             'draft_id' => $this->draftId,
             'disk' => static::DISK,
             'attachment' => $this->getAttachmentLocation(),
@@ -53,7 +51,7 @@ class FroalaUploadControllerTest extends TestCase
             ]);
         }
 
-        $this->assertDatabaseHas((new Attachment)->getTable(), [
+        $this->assertDatabaseHas($this->getAttachmentsTable(), [
             'disk' => static::DISK,
             'attachment' => $this->getAttachmentLocation(),
             'url' => Storage::disk(static::DISK)->url($this->getAttachmentLocation()),

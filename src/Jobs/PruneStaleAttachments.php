@@ -2,8 +2,6 @@
 
 namespace Froala\NovaFroalaField\Jobs;
 
-use Froala\NovaFroalaField\Models\PendingAttachment;
-
 class PruneStaleAttachments
 {
     /**
@@ -13,7 +11,9 @@ class PruneStaleAttachments
      */
     public function __invoke()
     {
-        PendingAttachment::where('created_at', '<=', now()->subDays(1))
+        $pendingAttachmentModelClassName = config('nova.froala-field.pending_attachment_model');
+
+        $pendingAttachmentModelClassName::where('created_at', '<=', now()->subDays(1))
                     ->orderBy('id', 'desc')
                     ->chunk(100, function ($attachments) {
                         $attachments->each->purge();

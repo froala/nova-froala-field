@@ -2,11 +2,28 @@
 
 namespace Froala\NovaFroalaField\Handlers;
 
-use Froala\NovaFroalaField\Models\PendingAttachment;
 use Illuminate\Http\Request;
 
 class DiscardPendingAttachments
 {
+    /**
+     * The pending attachment model class name.
+     *
+     * @var string
+     */
+    protected $pendingAttachmentModelClassName;
+
+    /**
+     * Create a new class instance.
+     *
+     * @param  string $pendingAttachmentModelClassName
+     * @return void
+     */
+    public function __construct($pendingAttachmentModelClassName)
+    {
+        $this->pendingAttachmentModelClassName = $pendingAttachmentModelClassName;
+    }
+
     /**
      * Discard pendings attachments on the field.
      *
@@ -15,7 +32,7 @@ class DiscardPendingAttachments
      */
     public function __invoke(Request $request)
     {
-        PendingAttachment::where('draft_id', $request->draftId)
+        $this->pendingAttachmentModelClassName::where('draft_id', $request->draftId)
                     ->get()
                     ->each
                     ->purge();

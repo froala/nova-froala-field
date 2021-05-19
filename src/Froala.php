@@ -7,7 +7,6 @@ use Froala\NovaFroalaField\Handlers\DeleteAttachments;
 use Froala\NovaFroalaField\Handlers\DetachAttachment;
 use Froala\NovaFroalaField\Handlers\DiscardPendingAttachments;
 use Froala\NovaFroalaField\Handlers\StorePendingAttachment;
-use Froala\NovaFroalaField\Models\PendingAttachment as FroalaPendingAttachment;
 use Illuminate\Support\Str;
 use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -119,10 +118,13 @@ class Froala extends Trix
             return parent::withFiles($disk, $path);
         }
 
-        $this->attach(new StorePendingAttachment($this))
-            ->detach(new DetachAttachment)
-            ->delete(new DeleteAttachments($this))
-            ->discard(new DiscardPendingAttachments)
+        $attachmentModelClassName = config('nova.froala-field.attachment_model');
+        $pendingAttachmentModelClassName = config('nova.froala-field.pending_attachment_model');
+
+        $this->attach(new StorePendingAttachment($this, $pendingAttachmentModelClassName))
+            ->detach(new DetachAttachment($attachmentModelClassName))
+            ->delete(new DeleteAttachments($this, $attachmentModelClassName))
+            ->discard(new DiscardPendingAttachments($pendingAttachmentModelClassName))
             ->images(new AttachedImagesList($this))
             ->prunable();
 
@@ -160,7 +162,7 @@ class Froala extends Trix
         if ($request->{$this->attribute.'DraftId'} && $this->withFiles) {
             $pendingAttachmentClass =
                 config('nova.froala-field.attachments_driver', self::DRIVER_NAME) === self::DRIVER_NAME
-                ? FroalaPendingAttachment::class
+                ? config('nova.froala-field.pending_attachment_model')
                 : TrixPendingAttachment::class;
 
             return function () use ($request, $model, $pendingAttachmentClass) {
