@@ -141,21 +141,21 @@ class Froala extends Trix
     protected function fillAttribute(NovaRequest $request, $requestAttribute, $model, $attribute)
     {
         if (isset($this->fillCallback)) {
-            return call_user_func(
+            call_user_func(
                 $this->fillCallback,
                 $request,
                 $model,
                 $attribute,
                 $requestAttribute
             );
+        } else {
+            $this->fillAttributeFromRequest(
+                $request,
+                $requestAttribute,
+                $model,
+                $attribute
+            );
         }
-
-        $this->fillAttributeFromRequest(
-            $request,
-            $requestAttribute,
-            $model,
-            $attribute
-        );
 
         if ($request->{$this->attribute.'DraftId'} && $this->withFiles) {
             $pendingAttachmentClass =
